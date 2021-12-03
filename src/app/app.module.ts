@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './Components/PageLayout/header/header.component';
-import { FooterComponent } from './Components/PageLayout/footer/footer.component';
 import { HomeComponent } from './Components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
@@ -15,12 +13,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './Components/products/products.component';
 import { CartComponent } from './Components/cart/cart.component';
+import { PageLayoutModule } from './Components/PageLayout/page-layout.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     HomeComponent,
     ProductDetailsComponent,
     AboutUsComponent,
@@ -36,6 +33,7 @@ import { CartComponent } from './Components/cart/cart.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    PageLayoutModule,
     HttpClientModule
   ],
   providers: [],
