@@ -1,13 +1,13 @@
 export interface IProduct {
 
-    ProductId:number;
-    Name:string;
-    Price:number;
-    Quantity:number;
-    Description:string;
-    CatId:number;
-    BrandId:number;
-    StockId:number;
-    SubCatId:number;
+    productId:number;
+    name:string;
+    price:number;
+    quantity:number;
+    description:string;
+    catId:number;
+    brandId:number;
+    stockId:number;
+    subCatId:number;
 
 }

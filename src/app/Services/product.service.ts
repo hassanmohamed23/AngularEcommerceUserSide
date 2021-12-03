@@ -6,6 +6,7 @@ import { IBrand } from '../ViewModels/ibrand';
 import { ICategory } from '../ViewModels/icategory';
 import { IComment } from '../ViewModels/icomment';
 import { IProduct } from '../ViewModels/iproduct';
+import { IResponse } from '../ViewModels/iresponse';
 import { ISubCategory } from '../ViewModels/isub-category';
 
 @Injectable({
@@ -15,15 +16,20 @@ export class ProductService {
   constructor(private httpservice:HttpClient) { }
   //-----------------------------------------------------------
   //Get All Products
-  getAllProducts():Observable<IProduct[]>
+  getAllProducts():Observable<IResponse>
   {
-    return this.httpservice.get<IProduct[]>(`${environment.APIURL}/products`);
+    const httpheader={
+      headers:new HttpHeaders,
+      'content-type': 'application/JSON'
+    } 
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`);
   }
   //-----------------------------------------------------------
   //Get Product BY ID 
   getProductByID(prdID:number):Observable<IProduct>
   {
-    return this.httpservice.get<IProduct>(`${environment.APIURL}/Product/${prdID}`);
+    
+    return this.httpservice.get<any>(`${environment.APIURL}/Product/${prdID}`);
   }
    //-----------------------------------------------------------
   //Get Products BY Category ID

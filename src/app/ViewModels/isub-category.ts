@@ -1,5 +1,5 @@
 export interface ISubCategory {
-    SubCategoryId:number;
-    CatId:number;
-    SubCatName:string;
+    subCategoryId:number;
+    catId:number;
+    subCatName:string;
 }
