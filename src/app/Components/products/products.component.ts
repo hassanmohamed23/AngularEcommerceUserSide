@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   prdList:IProduct[]=[] ;
 
   constructor(private ProductService:ProductService) {
-  //this.Response={Message="" ,isSucess=false ,Data={}as object}
+
 
    }
   
