@@ -20,9 +20,10 @@ const routes: Routes = [
     path: 'User', 
     loadChildren: () => import('src/app/Components/user/user.module')
                         .then(m => m.UserModule)
-  }
-  ,
-  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },{path:"**", component: NotFoundComponent}
+  },
+  
+  { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
+  {path:"**", component: NotFoundComponent}
 ];
 
 @NgModule({

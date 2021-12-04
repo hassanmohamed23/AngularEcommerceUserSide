@@ -22,7 +22,6 @@ import { RegisterationComponent } from './Components/registeration/registeration
     ContactUsComponent,
     NotFoundComponent,
     CartComponent,
-    // LoginComponent,
     RegisterationComponent
   ],
   imports: [
