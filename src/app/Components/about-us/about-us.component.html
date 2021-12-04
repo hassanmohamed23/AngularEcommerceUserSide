@@ -1,37 +1,127 @@
-<h1 class="mt-5 text-primary">Our Team</h1>
-<div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
-    <div class="col">
-      <div class="card">
-        <img src="https://www.w3schools.com/w3images/team1.jpg" class="card-img-top " alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Jane Doe</h5>
-          <h6 class="card-title text-muted">CEO & Founder</h6>
-          <p class="card-text">Some text that describes me lorem ipsum ipsum lorem</p>
-          <p>jane@example.com</p>
-        </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #88f17a;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: rgb(46, 26, 230);
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="assets/photo.jpg" alt="Jane" style="width:100%;max-height: 200px;">
+      <div class="container">
+        <h2>Mohamed Ibrahim</h2>
+        <p class="title">CEO & Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mohamed@example.com</p>
+        <p><button class="button">Contact</button></p>
       </div>
     </div>
-    <div class="col">
-        <div class="card">
-          <img src="https://www.w3schools.com/w3images/team2.jpg" class="card-img-top " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Jane Doe</h5>
-            <h6 class="card-title text-muted">CEO & Founder</h6>
-            <p class="card-text">Some text that describes me lorem ipsum ipsum lorem</p>
-            <p>jane@example.com</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://www.w3schools.com/w3images/team3.jpg" class="card-img-top " alt="...">
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <h6 class="card-title text-muted">Designer</h6>
-            <p class="card-text">Some text that describes me lorem ipsum ipsum lorem</p>
-            <p>jane@example.com</p>
-          </div>
-        </div>
-      </div>
-
   </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="https://www.w3schools.com//w3images/team2.jpg" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>Mike Ross</h2>
+        <p class="title">Art Director</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>mike@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="https://www.w3schools.com//w3images/team3.jpg" alt="John" style="width:100%">
+      <div class="container">
+        <h2>John Doe</h2>
+        <p class="title">Designer</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>john@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
