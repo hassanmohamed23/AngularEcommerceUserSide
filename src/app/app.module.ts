@@ -10,9 +10,11 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './Components/cart/cart.component';
-import { PageLayoutModule } from './Components/PageLayout/page-layout.module';
 // import { LoginComponent } from './Components/User/login/login.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
+import { HeaderComponent } from './Components/PageLayout/header/header.component';
+import { FooterComponent } from './Components/PageLayout/footer/footer.component';
+import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,11 @@ import { RegisterationComponent } from './Components/registeration/registeration
     ContactUsComponent,
     NotFoundComponent,
     CartComponent,
-    RegisterationComponent
+    HeaderComponent,
+    FooterComponent,
+
+    RegisterationComponent,
+      SideBarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,7 @@ import { RegisterationComponent } from './Components/registeration/registeration
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    PageLayoutModule,
+    
     HttpClientModule
   ],
   providers: [],
