@@ -201,9 +201,11 @@
 </section> -->
 <div class='container-fluid' >
     <div class="row p-5">
-        <div class="card mx-auto col-md-3 col-10 mt-5 container-fluid"*ngFor="let prd of prdList; let i=index" >
+        <div class="card mx-auto col-md-3 col-10 mt-5 container-fluid" *ngFor="let prd of prdList; let i=index" >
            
             <div class="row">
+                <img class="card-img-top " src="https://m.media-amazon.com/images/I/41v6LSrV9OS._AC_SL1000_.jpg" width="40px" height="40px" alt="..." />
+
                 <div class="card-body text-center mx-auto">
                     <div class='cvp '>
                         <h5 class="card-title font-weight-bold">{{prd.name}}</h5>

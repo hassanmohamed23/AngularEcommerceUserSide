@@ -38,49 +38,53 @@ export class ProductService {
   }
    //-----------------------------------------------------------
   //Get Products BY Category ID
-  getProductsByCatID(CatID:number):Observable<IResponse[]>
+  getProductsByCatID(CatID:number):Observable<IResponse>
   {
     const httpheader={
       headers:new HttpHeaders,
       'content-type': 'application/JSON'
     } 
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/ProductByCatID/${CatID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductByCatID/${CatID}`);
   }
   //-----------------------------------------------------------
   //Get Products BY SubCategory ID
-  getProductsBySubCatID(SubCatID:number):Observable<IResponse[]>
+  getProductsBySubCatID(SubCatID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/ProductBySubCat​/${SubCatID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductBySubCat​/${SubCatID}`);
   }
   //-----------------------------------------------------------
   //Get Products BY Brand ID
-  getProductsByBrandID(BrandID:number):Observable<IResponse[]>
+  getProductsByBrandID(BrandID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}​/ProductByBrandId​/${BrandID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId​/${BrandID}`);
   }
   //-----------------------------------------------------------
   //Get All Categorys 
-  getAllCategory():Observable<IResponse[]>
+  getAllCategory():Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/Category`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Category`);
   }
    //-----------------------------------------------------------
   //Get All SubCategorys 
-  getAllSubCategory():Observable<IResponse[]>
+  getAllSubCategory():Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/SubCategory`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/SubCategory`);
+  }
+  getSubCatByCatID(CatID:number):Observable<IResponse>
+  {
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/SubCategoryByCatId/${CatID}`);
   }
    //-----------------------------------------------------------
   //Get All Brands 
-  getAllBrands():Observable<IResponse[]>
+  getAllBrands():Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/Brands`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Brands`);
   }
    //-----------------------------------------------------------
   //Get All Comments By Product ID
-  getAllComment(PrdID:number):Observable<IResponse[]>
+  getAllComment(PrdID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse[]>(`${environment.APIURL}/Comments/${PrdID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Comments/${PrdID}`);
   }
 
 

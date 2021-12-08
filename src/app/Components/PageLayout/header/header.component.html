@@ -19,32 +19,22 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a href="#">Category</a>
+                        <li><a>cate</a>
                             <div class="megamenu">
-                                <ul class="single-mega cn-col-4">
-                                    <li class="title">Mobiles & Tablets</li>
-                                    <li><a href="#">Mobiles</a></li>
-                                    <li><a href="#">Tablets &amp; Shirts</a></li>
-                                    <li><a href="#">Mobile and Tablet Accessories</a></li>
+                                <ul class="single-mega cn-col-4" *ngFor="let item of catList">
+                                    <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}</a>
+<!-- 
+                                       <input type="hidden" value="item.categoryId"  >
+                                        <ul  *ngFor="let sub of SubcatList">
+                                            <li class="title"><a [routerLink]="['/products/subcat',sub.subCategoryId]" routerLinkActive="active">{{item.subCatName}}</a>
+                                                    
+                                            </li>
+                                           
+                                        </ul>  -->
+                                    </li>
                                    
                                 </ul>
-                                <ul class="single-mega cn-col-4">
-                                    <li class="title">Television</li>
-                                    <li><a href="#">Tvs</a></li>
-                                    <li><a href="#">Tvs Accessories</a></li>
-                                </ul>
-                                <ul class="single-mega cn-col-4">
-                                    <li class="title">Laptop and computer</li>
-                                    <li><a href="#">Laptop</a></li>
-                                    <li><a href="#">Computer</a></li>
-                                    <li><a href="#">Laptop and Computer Accessories</a></li>
-                                </ul>
-                                <ul class="single-mega cn-col-4">
-                                    <li class="title">Bagd , Shoes &More</li>
-                                    <li><a href="#">Shoes</a></li>
-                                    <li><a href="#">Clothes</a></li>
-                                    <li><a href="#">Bages</a></li>
-                                </ul>
+                                
                                 
                                 
                             </div>

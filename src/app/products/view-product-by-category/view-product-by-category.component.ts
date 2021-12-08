@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-view-product-by-category',
@@ -7,20 +8,24 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./view-product-by-category.component.scss']
 })
 export class ViewProductByCategoryComponent implements OnInit {
-
-  constructor(private CatService:ProductService) { }
+  CatID:number=1;
+  show:boolean=true;
+  productShowList:any=[]
+  constructor(private productService:ProductService,private activatedRouter:ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.CatService.().subscribe({
-    //   next:(Response:IResponse)=>{
-    //     console.log(Response);
-    //     this.prdList=Response["data"];
-    //     //console.log(this.prdList);
-    //  //this.prdList=this.Response["data"] ;
-    
-    //   }
-      
-    // });
+    //this.CatID= Number(this.activatedRouter.snapshot.paramMap.get("id"));
+    this.activatedRouter.paramMap.subscribe((params)=>{
+      this.CatID=Number(params.get("id"));
+      this.fillProductList(this.CatID)
+    });
+    this.fillProductList(this.CatID);
+  
+  }
+  fillProductList(CatID:number){
+    this.productService.getProductsByCatID(CatID).subscribe({
+      next:(res)=>{this.productShowList=res.data}
+    });
   }
 
 }
