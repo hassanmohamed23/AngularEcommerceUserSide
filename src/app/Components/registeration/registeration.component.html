@@ -1,0 +1,26 @@
+
+<br>
+<form [formGroup]="loginform" (ngSubmit)="onSubmit()"> 
+
+    <div class="mb-3">
+        <label for="name" [hidden]="isUserLogged" class="form-label">Enter User Name</label>
+        <input type="text" [hidden]="isUserLogged"  formControlName="Name"  [class.is-invalid]="loginform.controls['Name'].invalid" [class.is-valid]="loginform.controls['Name'].valid" class="form-control" name="" id="name" aria-describedby="emailHelpId" placeholder="">
+        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">Help text</small>
+      </div>
+
+    <div class="mb-3">
+      <label for="email" [hidden]="isUserLogged" class="form-label">Enter your email</label>
+      <input type="email" [hidden]="isUserLogged"  formControlName="Email"  [class.is-invalid]="loginform.controls['Email'].invalid" [class.is-valid]="loginform.controls['Email'].valid" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+      <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">Help text</small>
+    </div>
+ 
+    <div class="mb-3">
+      <label for="pass" [hidden]="isUserLogged" class="form-label">Enter Password</label>
+      <input type="password" [hidden]="isUserLogged" [class.is-invalid]="loginform.controls['Password'].invalid" [class.is-valid]="loginform.controls['Password'].valid" formControlName="Password" class="form-control" name="" id="pass" placeholder="">
+    </div>
+
+    <button type="submit" [hidden]="isUserLogged" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
+</form>
+<hr>
+
+  <a name="" id="" [hidden]="!isUserLogged" class="btn btn-primary" routerLink="/User/MyProfile" href="#" role="button">Go To YourProfile</a>
