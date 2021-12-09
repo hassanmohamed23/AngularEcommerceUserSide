@@ -15,22 +15,15 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 export class ViewAllProductComponent implements OnInit {
 
 
-  prdList: any[] = [];
-  prdimg: any[] = [];
+   public productList: any[] = [];
+  public prdImgsList: any[] = [];
   catList: any[] = [];
   constructor(private ProductService: ProductService, private route: Router,
     private cartService:CartService) {
 
 
   }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.ProductService.getAllCategory().subscribe({
-  //     next:(Response:any)=>{
-  //       console.log(Response);
-  //      // this.catList=Response;
-  //     }
-  //   });
-  // }
+  
 
   ngOnInit(): void {
 
@@ -38,25 +31,25 @@ export class ViewAllProductComponent implements OnInit {
     this.ProductService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
         console.log(Response);
-        this.prdList = Response["data"];
-        this.getProductImgs();
-        console.log(this.prdimg)
+        this.productList = Response["data"];
+        this.productList.forEach((product,index)=>{
+          console.log(product)
+          this.ProductService.getProductImgByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              
+              this.prdImgsList[index] = Response.data[0];
+            }
+          })
+        })
+        
+        
       }
     });
-  }
-
-  getProductImgs(){
-    this.prdList.forEach((p,index)=>{
-      this.ProductService.getProductImgByID(p.id).subscribe({
-        next: (Response: IResponse) => {
-          console.log(Response);
-          this.prdimg[index] = Response["data"][0];
-        }
-      })
-    })
   }
 
   addtocart(item: any){
     this.cartService.addtoCart(item);
   }
+ 
 }

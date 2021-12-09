@@ -1,4 +1,8 @@
 <!-- partial:index.partial.html -->
+<h1 *ngIf="!products.length;else elseBlock" >no products to show</h1>
+
+
+ <ng-template #elseBlock>
 <div class='container-fluid' >
     <div class="row p-5">
         <div class="card mx-auto col-md-3 col-10 mt-5 container-fluid" *ngFor="let prd of products; let i=index" >
@@ -12,7 +16,7 @@
                         <p class="card-text">{{prd.price }}</p>
                         <a class="align-self-end btn details px-auto mt-auto" > Details</a>
                         <br /><br />
- 
+						<button class="btn-primary" (click)="removeItem(prd)">emove</button>
                     </div>
                 </div>
   
@@ -20,6 +24,9 @@
         </div>    
     </div>
 </div>
+<button class="btn-primary" (click)="emptycart()">empty cart</button>
+<h2 >{{grandTotal}}</h2>
+</ng-template>
 
 
 
