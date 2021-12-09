@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IResponse } from 'src/app/ViewModels/iresponse';
 import { ProductService } from 'src/app/Services/product.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,40 +11,35 @@ import { ProductService } from 'src/app/Services/product.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  catList:any[]=[];
-  SubcatList:any[]=[];
-CatId:any;
+  catList: any[] = [];
+  SubcatList: any[] = [];
+  CatId: any;
+  public cartProdCount: number = 0;
 
-  constructor(private activatedRoute: ActivatedRoute,private ProductService:ProductService, private route:Router) { }
 
-  
+  constructor(private activatedRoute: ActivatedRoute, private ProductService: ProductService,
+    private route: Router, private cartService: CartService) { }
+
+
   ngOnInit(): void {
     this.ProductService.getAllCategory().subscribe({
-      next:(Response:IResponse)=>{
+      next: (Response: IResponse) => {
         console.log(Response);
-        this.catList=Response["data"];
-    
+        this.catList = Response["data"];
       }
-      
     });
-    
+
     this.ProductService.getAllSubCategory().subscribe({
-      next:(Response:IResponse)=>{
+      next: (Response: IResponse) => {
         console.log(Response);
-        this.SubcatList=Response["data"];
-    
+        this.SubcatList = Response["data"];
       }
-      
     });
-    console.log(this.CatId);
-    
 
-
-  
+    this.cartService.getProducts()
+      .subscribe(res => {
+        this.cartProdCount = res.length;
+      })
   }
-print(catid:any){
-  console.log("sub"+catid);
-
-}
 
 }
