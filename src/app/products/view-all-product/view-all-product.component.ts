@@ -15,10 +15,9 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 export class ViewAllProductComponent implements OnInit {
 
 
-   public productList: any[] = [];
+  public productList: any[] = [];
   public prdImgsList: any[] = [];
-  catList: any[] = [];
-  constructor(private ProductService: ProductService, private route: Router,
+  constructor(private ProductService: ProductService,
     private cartService:CartService) {
 
 
@@ -26,24 +25,16 @@ export class ViewAllProductComponent implements OnInit {
   
 
   ngOnInit(): void {
-
-
     this.ProductService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
-        console.log(Response);
         this.productList = Response["data"];
         this.productList.forEach((product,index)=>{
-          console.log(product)
           this.ProductService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
-              console.log(Response);
-              
               this.prdImgsList[index] = Response.data[0];
             }
           })
         })
-        
-        
       }
     });
   }

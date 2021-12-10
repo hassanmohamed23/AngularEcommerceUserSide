@@ -1,0 +1,33 @@
+
+
+<form [formGroup]="loginform" (ngSubmit)="onSubmit()" class="col-md-6" style="margin: auto;">
+  
+    <!-- <div class="form-group">
+      <label class="col-md-4 control-label">First Name</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+        </div>
+      </div> 
+    </div> -->
+    <div >
+      <input  type="text" formControlName="UserName" class="form-control" placeholder="UserName"
+      [class.is-valid]="loginform.controls['UserName'].valid"
+      [class.is-invalid]="loginform.controls['UserName'].invalid">
+    </div>
+  
+    <div>
+      <input  type="text" formControlName="Password" class="form-control" placeholder="Password"
+      [class.is-valid]="loginform.controls['Password'].valid"
+      [class.is-invalid]="loginform.controls['Password'].invalid">
+    </div>
+  
+      <div style="color: red;" [hidden]="isValidMsgHidden">invalid username or password</div>
+  
+      <div><button type="submit" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button></div>
+  </form>
+  
+  <p>{{loginform.value|json}}</p>
+  
+  
