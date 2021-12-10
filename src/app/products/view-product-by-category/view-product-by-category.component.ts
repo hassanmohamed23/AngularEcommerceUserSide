@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/Services/product.service';
 import { ActivatedRoute} from '@angular/router';
+import { IResponse } from 'src/app/ViewModels/iresponse';
+import { CartService } from 'src/app/Services/cart.service';
+import { WatchListService } from 'src/app/Services/watch-list.service';
 
 @Component({
   selector: 'app-view-product-by-category',
@@ -10,8 +13,10 @@ import { ActivatedRoute} from '@angular/router';
 export class ViewProductByCategoryComponent implements OnInit {
   CatID:number=1;
   show:boolean=true;
-  productShowList:any=[]
-  constructor(private productService:ProductService,private activatedRouter:ActivatedRoute) { }
+  productList:any=[];
+  public prdImgsList: any[] = [];
+
+  constructor(private productService:ProductService,private activatedRouter:ActivatedRoute,private cartService:CartService,private watchService:WatchListService) { }
 
   ngOnInit(): void {
     //this.CatID= Number(this.activatedRouter.snapshot.paramMap.get("id"));
@@ -24,8 +29,25 @@ export class ViewProductByCategoryComponent implements OnInit {
   }
   fillProductList(CatID:number){
     this.productService.getProductsByCatID(CatID).subscribe({
-      next:(res)=>{this.productShowList=res.data}
+      next: (Response: IResponse) => {
+
+      this.productList = Response["data"];
+
+      this.productList.forEach((product:any,index:any)=>{
+        this.productService.getProductImgByID(product.productId).subscribe({
+          next: (Response: IResponse) => {
+            
+            this.prdImgsList[index] = Response.data[0];
+          }
+        })
+      })
+    }      
     });
   }
-
+  addtocart(item: any){
+    this.cartService.addtoCart(item);
+  }
+  addtowatct(item: any){
+    this.watchService.addtowatch(item);
+  }
 }

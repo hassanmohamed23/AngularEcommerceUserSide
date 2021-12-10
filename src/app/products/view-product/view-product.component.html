@@ -1,78 +1,77 @@
 <!--Section: Block Content-->
 <section class="mb-5">
 
-    <div class="row">
-      <div class="col-md-6 mb-4 mb-md-0">
-  
-        <div id="mdb-lightbox-ui"></div>
-  
-        <div class="mdb-lightbox">
-  
-          <div class="row product-gallery mx-1">
-  
-            <div class="col-12 mb-0">
-              <figure class="view overlay rounded z-depth-1 main-img">
-                <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                  data-size="710x823">
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+
+      <div id="mdb-lightbox-ui"></div>
+
+      <div class="mdb-lightbox">
+
+        <div class="row product-gallery mx-1">
+
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+              <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                data-size="710x823">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                  class="img-fluid z-depth-1">
+              </a>
+            </figure>
+            
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
                   <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                    class="img-fluid z-depth-1">
-                </a>
-              </figure>
-              
-            </div>
-            <div class="col-12">
-              <div class="row">
-                <div class="col-3">
-                  <div class="view overlay rounded z-depth-1 gallery-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
-                      class="img-fluid">
-                    <div class="mask rgba-white-slight"></div>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="view overlay rounded z-depth-1 gallery-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13a.jpg"
-                      class="img-fluid">
-                    <div class="mask rgba-white-slight"></div>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="view overlay rounded z-depth-1 gallery-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14a.jpg"
-                      class="img-fluid">
-                    <div class="mask rgba-white-slight"></div>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="view overlay rounded z-depth-1 gallery-item">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                      class="img-fluid">
-                    <div class="mask rgba-white-slight"></div>
-                  </div>
+                    class="img-fluid">
+                  <div class="mask rgba-white-slight"></div>
                 </div>
               </div>
             </div>
           </div>
-  
         </div>
-  
+
       </div>
-      <div class="col-md-6">
-  
-        <h5>Fantasy T-shirt</h5>
-        <p class="mb-2 text-muted text-uppercase small">{{product.name}}</p>
-        
-        <p><span class="mr-1"><strong>{{product.price}}</strong></span></p>
-        <p class="pt-1">{{product.description}}</p>
-      
-        <hr>
-        
-        <button type="button" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to cart</button>
-      </div>
+
     </div>
-  
-  </section>
-  <!--Section: Block Content-->
+    <div class="col-md-6">
+
+      <h5>{{product.name}}</h5>
+      
+      <p><span class="mr-1"><strong>{{product.price}}</strong></span></p>
+      <p class="pt-1">{{product.description}}</p>
+    
+      <hr>
+
+      <button type="button"(click)="addtocart(product)" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to cart</button>
+    </div>
+  </div>
+
+</section>
+<!--Section: Block Content-->
 
 
 
@@ -101,31 +100,31 @@
 
 
 <!-- <div class="card mt-4">
-    <img class="card-img-top img-fluid" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
-    <div class="card-body">
-        <h3 class="card-title">Product Name {{ProductId}}</h3>
-        <h4>$24.25</h4>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aspernatur laudantium laborum, earum cupiditate dolorum rem expedita reiciendis eum, aut animi vero maxime, harum amet obcaecati dolorem? Aut, voluptate corporis?</p>
-        <span class="text-warning">&#9733; &#9733; &#9733; &#9733;</span>
-        4.0 stars
-    </div>
+  <img class="card-img-top img-fluid" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+  <div class="card-body">
+      <h3 class="card-title">Product Name {{ProductId}}</h3>
+      <h4>$24.25</h4>
+      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint aspernatur laudantium laborum, earum cupiditate dolorum rem expedita reiciendis eum, aut animi vero maxime, harum amet obcaecati dolorem? Aut, voluptate corporis?</p>
+      <span class="text-warning">&#9733; &#9733; &#9733; &#9733;</span>
+      4.0 stars
+  </div>
 </div>card
 <div class="card card-outline-secondary my-4">
-    <div class="card-header">
-        Product Reviews
-    </div>
-    <div class="card-body">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
-         <small class="text-muted">Post By  ananymous on 3/1/2017</small>
-         <hr>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
-         <small class="text-muted">Post By  ananymous on 3/1/2017</small>
-         <hr>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
-         <small class="text-muted">Post By  ananymous on 3/1/2017</small>
-         <hr>
-         <a href="#" class="btn btn-success">Leave a Rewiew</a>
-    </div>
+  <div class="card-header">
+      Product Reviews
+  </div>
+  <div class="card-body">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
+       <small class="text-muted">Post By  ananymous on 3/1/2017</small>
+       <hr>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
+       <small class="text-muted">Post By  ananymous on 3/1/2017</small>
+       <hr>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo facere veritatis atque voluptate et illum, assumenda fugit accusantium error quisquam repudiandae natus provident nobis at cum earum autem excepturi expedita?</p>
+       <small class="text-muted">Post By  ananymous on 3/1/2017</small>
+       <hr>
+       <a href="#" class="btn btn-success">Leave a Rewiew</a>
+  </div>
 </div>
- -->
+-->
 

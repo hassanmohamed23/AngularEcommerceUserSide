@@ -1,1 +1,49 @@
-<p>view-product-by-brand works!</p>
+
+<section class="section-products container-fluid">
+	<div class="container">
+		<div class="row justify-content-center text-center">
+			<div class="col-md-8 col-lg-6">
+				<div class="header">
+					<h3>Featured Product</h3>
+					<h2>Popular Products</h2>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-evenly">
+			<!-- Single Product -->
+			<div class="col-md-6 col-lg-5 col-xl-3 product-card" *ngFor="let prd of productList; let i=index">
+
+				<div id="product-1" class="single-product">
+                <!-- style="background: url({{prdimg[i].src}}) no-repeat ;
+								background-size: cover;"> -->
+					
+								<img [src]="prdImgsList[i].src" style="height:300px; width:100%;max-height: 300px;"> 
+							
+                                <span class="discount">15% off</span>
+					<div class="part-1">
+						
+						<ul style="color: black;">
+							<li (click)="addtocart(prd)"><i class="fas fa-plus"></i><i class="fas fa-shopping-cart"></i></li>
+							<li  (click)="addtowatct(prd)"><i class="fas fa-heart"></i></li>
+							<li>
+								<a [routerLink]="['/products/details',prd.productId]" routerLinkActive="active">
+									<i class="fas fa-expand"></i>
+								</a>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+				<hr style="margin:0px">
+				<div class="part-2">
+					<h3 class="product-title">{{prd.name}}</h3>
+					<h4 class="product-old-price">$49.99</h4>
+					<h4 class="product-price">EGY{{prd.price}}</h4>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+</section>

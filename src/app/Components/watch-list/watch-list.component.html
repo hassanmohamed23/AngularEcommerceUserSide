@@ -1,0 +1,33 @@
+<!-- partial:index.partial.html -->
+<h1 *ngIf="!products.length;else elseBlock" >no products to show</h1>
+
+
+ <ng-template #elseBlock>
+<div class='container-fluid' >
+    <div class="row p-5">
+        <div class="card mx-auto col-md-3 col-10 mt-5 container-fluid" *ngFor="let prd of products; let i=index" >
+           
+            <div class="row">
+                <img class="card-img-top " src="https://m.media-amazon.com/images/I/41v6LSrV9OS._AC_SL1000_.jpg" width="40px" height="40px" alt="..." />
+
+                <div class="card-body text-center mx-auto">
+                    <div class='cvp '>
+                        <h5 class="card-title font-weight-bold">{{prd.name}}</h5>
+                        <p class="card-text">{{prd.price }}</p>
+                        <a class="align-self-end btn details px-auto mt-auto" > Details</a>
+                        <br /><br />
+						<button class="btn btn-primary" (click)="removeItem(prd)">Remove</button>
+                    </div>
+                </div>
+  
+            </div>
+        </div>    
+    </div>
+</div>
+<div class="col-md-8 col-lg-6">
+	<div class="header" style="text-align: center;margin-left: 320px; background-color: slategrey;width: 100%;"><br>
+		<button class="btn btn-warning" (click)="emptywatch()">Empty WatchList</button><br><br>
+	</div>
+</div>
+
+</ng-template>

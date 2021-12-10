@@ -7,6 +7,7 @@ import { ViewProductByCategoryComponent } from './view-product-by-category/view-
 import { ViewProductComponent } from './view-product/view-product.component';
 import { ViewAllProductComponent } from './view-all-product/view-all-product.component';
 import { ViewProductByBrandComponent } from './view-product-by-brand/view-product-by-brand.component';
+import { ViewProductBySubComponent } from './view-product-by-sub/view-product-by-sub.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ViewProductByBrandComponent } from './view-product-by-brand/view-produc
     ViewProductByCategoryComponent,
     ViewProductComponent,
     ViewAllProductComponent,
-    ViewProductByBrandComponent
+    ViewProductByBrandComponent,
+    ViewProductBySubComponent,
   ],
   imports: [
     CommonModule,

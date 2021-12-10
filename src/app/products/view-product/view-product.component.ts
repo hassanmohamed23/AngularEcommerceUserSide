@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/Services/cart.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { IProduct } from 'src/app/ViewModels/iproduct';
 
@@ -9,31 +10,27 @@ import { IProduct } from 'src/app/ViewModels/iproduct';
   styleUrls: ['./view-product.component.scss']
 })
 export class ViewProductComponent implements OnInit {
-ProductId=0;
-sntProdID: number=0;
-product:any;
-productImages:any;
-  constructor(private activatedRouter:ActivatedRoute
-    , private productService:ProductService
-    , private router:Router
-    , private location:Location) { }
+  CatID:number=1;
+  show:boolean=true;
+  product:any;
+  constructor(private productService:ProductService,
+    private activatedRouter:ActivatedRoute,private cartService:CartService) { }
 
   ngOnInit(): void {
+    //this.CatID= Number(this.activatedRouter.snapshot.paramMap.get("id"));
     this.activatedRouter.paramMap.subscribe((params)=>{
-      this.sntProdID=Number(params.get("id"));
-      this.fillProductData();
-  })
+      this.CatID=Number(params.get("id"));
+      this.fillProductList(this.CatID)
+    });
+    this.fillProductList(this.CatID);
+  
+  }
+  fillProductList(CatID:number){
+    this.productService.getProductByID(CatID).subscribe({
+      next:(res)=>{this.product=res.data}
+    });
+  }
+  addtocart(item: any){
+    this.cartService.addtoCart(item);
+  }
 }
-
-fillProductData(){
-  this.productService.getProductByID(this.sntProdID).subscribe({
-    next:(Response)=>{this.product=Response.data;
-      //console.log(this.product);
-    }});
-    // this.productService.getProductImgByID(this.sntProdID).subscribe({
-    //   next:(Response)=>{this.productImages=Response.data;
-    //     //console.log(this.productImages);
-    //   }});;
-}
-}
-

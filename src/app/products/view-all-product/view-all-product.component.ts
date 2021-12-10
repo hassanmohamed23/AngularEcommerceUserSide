@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { ProductService } from 'src/app/Services/product.service';
+import { WatchListService } from 'src/app/Services/watch-list.service';
 import { ICategory } from 'src/app/ViewModels/icategory';
 import { IProduct } from 'src/app/ViewModels/iproduct';
 import { IResponse } from 'src/app/ViewModels/iresponse';
@@ -19,7 +20,8 @@ export class ViewAllProductComponent implements OnInit {
   public prdImgsList: any[] = [];
   catList: any[] = [];
   constructor(private ProductService: ProductService, private route: Router,
-    private cartService:CartService) {
+    private cartService:CartService,
+    private watchService:WatchListService) {
 
 
   }
@@ -30,13 +32,11 @@ export class ViewAllProductComponent implements OnInit {
 
     this.ProductService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
-        console.log(Response);
         this.productList = Response["data"];
+
         this.productList.forEach((product,index)=>{
-          console.log(product)
           this.ProductService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
-              console.log(Response);
               
               this.prdImgsList[index] = Response.data[0];
             }
@@ -51,5 +51,7 @@ export class ViewAllProductComponent implements OnInit {
   addtocart(item: any){
     this.cartService.addtoCart(item);
   }
- 
+  addtowatct(item: any){
+    this.watchService.addtowatch(item);
+  }
 }
