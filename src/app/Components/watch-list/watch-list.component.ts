@@ -1,17 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WatchListService } from 'src/app/Services/watch-list.service';
+import { IResponse } from 'src/app/ViewModels/iresponse';
+import { ProductService } from 'src/app/Services/product.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-watch-list',
   templateUrl: './watch-list.component.html',
-  styleUrls: ['./watch-list.component.sass']
+  styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
   public products : any = [];
   public product : any = [];
   public grandTotal !: number;
   public img="https://i.ibb.co/L8Nrb7p/1.jpg"
-  constructor(private watchService : WatchListService) { }
+  constructor(private watchService : WatchListService,
+    private ProductService: ProductService, private route: Router,
+    private cartService:CartService
+    ) { }
 
   ngOnInit(): void {
     this.watchService.getProducts()
@@ -19,6 +26,7 @@ export class WatchListComponent implements OnInit {
       this.products = res;
       this.grandTotal = this.watchService.getTotalPrice();
     })
+
   }
   removeItem(item: any){
     this.watchService.removeCartItem(item);
@@ -26,5 +34,7 @@ export class WatchListComponent implements OnInit {
   emptywatch(){
     this.watchService.removeAllCart();
   }
-
+  addtocart(item: any){
+    this.cartService.addtoCart(item);
+  }
 }
