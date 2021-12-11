@@ -6,14 +6,15 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { HomeComponent } from './Components/home/home.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
+import { WatchListComponent } from './Components/watch-list/watch-list.component';
 
 const routes: Routes = [
    {path:'', redirectTo:'/home', pathMatch:'full'}, //Default path
   {path:'home', component: HomeComponent },
-  // {path:'allproducts', component: ProductsComponent},
-  // {path:'products/:pID', component:ProductDetailsComponent},
   {path:'aboutus', component: AboutUsComponent}, 
   {path:'cart' ,component:CartComponent},
+  {path:'watch' ,component:WatchListComponent},
+
   {path:'contact' ,component:ContactUsComponent},
   {path:"Register",component:RegisterationComponent},
   {

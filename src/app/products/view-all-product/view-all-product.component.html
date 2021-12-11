@@ -1,5 +1,5 @@
 
-<!--  another card design  -->
+
 <section class="section-products container-fluid">
 	<div class="container">
 		<div class="row justify-content-center text-center">
@@ -25,16 +25,22 @@
 						
 						<ul style="color: black;">
 							<li (click)="addtocart(prd)"><i class="fas fa-plus"></i><i class="fas fa-shopping-cart"></i></li>
-							<li ><i class="fas fa-heart"></i></li>
-							<li><i class="fas fa-expand"></i></li>
+							<li  (click)="addtowatct(prd)"><i class="fas fa-heart"></i></li>
+							<li>
+								<a [routerLink]="['/products/details',prd.productId]" routerLinkActive="active">
+									<i class="fas fa-expand"></i>
+								</a>
+								
+							</li>
 						</ul>
 					</div>
 				</div>
 				<hr style="margin:0px">
 				<div class="part-2">
 					<h3 class="product-title">{{prd.name}}</h3>
-					<h4 class="product-old-price">EY{{prd.price}}</h4>
-					<h4 class="product-price">EY{{prd.price}}</h4>
+
+					<h4 class="product-old-price">$49.99</h4>
+					<h4 class="product-price">EGY{{prd.price}}</h4>
 				</div>
 
 			</div>

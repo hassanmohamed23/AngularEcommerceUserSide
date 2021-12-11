@@ -50,13 +50,21 @@ export class ProductService {
   //Get Products BY SubCategory ID
   getProductsBySubCatID(SubCatID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductBySubCat​/${SubCatID}`);
+    const httpheader={
+      headers:new HttpHeaders,
+      'content-type': 'application/JSON'
+    } 
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductBySubCat/${SubCatID}`);
   }
   //-----------------------------------------------------------
   //Get Products BY Brand ID
   getProductsByBrandID(BrandID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId​/${BrandID}`);
+    const httpheader={
+      headers:new HttpHeaders,
+      'content-type': 'application/JSON'
+    } 
+    return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId/${BrandID}`);
   }
   //-----------------------------------------------------------
   //Get All Categorys 

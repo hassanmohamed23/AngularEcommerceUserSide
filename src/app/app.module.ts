@@ -15,6 +15,7 @@ import { RegisterationComponent } from './Components/registeration/registeration
 import { HeaderComponent } from './Components/PageLayout/header/header.component';
 import { FooterComponent } from './Components/PageLayout/footer/footer.component';
 import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.component';
+import { WatchListComponent } from './Components/watch-list/watch-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.comp
     FooterComponent,
 
     RegisterationComponent,
-      SideBarComponent
+      SideBarComponent,
+      WatchListComponent
   ],
   imports: [
     BrowserModule,

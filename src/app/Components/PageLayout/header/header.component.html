@@ -19,50 +19,46 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a>cate</a>
+                        <li><a>cat</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4" *ngFor="let item of catList">
-                                    <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}</a>
-<!-- 
-                                       <input type="hidden" value="item.categoryId"  >
-                                        <ul  *ngFor="let sub of SubcatList">
-                                            <li class="title"><a [routerLink]="['/products/subcat',sub.subCategoryId]" routerLinkActive="active">{{item.subCatName}}</a>
-                                                    
-                                            </li>
-                                           
-                                        </ul>  -->
+                                    <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}     
+                                    </a>
                                     </li>
-                                   
                                 </ul>
-                                
-                                
-                                
+                            </div>
+                        </li>
+                        <li><a>subc</a>
+                            <div class="megamenu">
+                                <ul class="single-mega cn-col-4" *ngFor="let sub of SubcatList">
+                                    <li class="title"><a [routerLink]="['/products/subcat',sub.subCategoryId]" routerLinkActive="active">{{sub.subCatName}}</a>
+                                    </li>
+                                </ul>  
+                            </div>
+                        </li>
+                        <li><a>Brand</a>
+                            <div class="megamenu">
+                                <ul class="single-mega cn-col-4" *ngFor="let brd of brandList">
+                                    <li class="title"><a [routerLink]="['/products/brand',brd.brandId]" routerLinkActive="active">{{brd.brandName}}</a>
+                                    </li>
+                                </ul>  
                             </div>
                         </li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a routerLink="/Home" routerLinkActive="active">Home</a></li>
+                                <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
                                 <li><a class="" routerLink="/products" routerLinkActive="active">Products</a>
                                 </li>
-                                <li><a href="#">Product Details</a></li>
+                                <li><a [routerLink]="['/products/details/2']" routerLinkActive="active">Product Details</a></li>
                                 <li><a href="#">Checkout</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">ِAboute Us</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a routerLink='/aboutus' routerLinkActive="active">ِAboute Us</a></li>
+                                <li><a routerLink='/Register' routerLinkActive="active">Register</a></li>
+                                <li><a routerLink='/User/Login' routerLinkActive="active">Login</a></li>
+                                <li><a routerLink='/contact' routerLinkActive="active">Contact</a></li>
                             </ul>
                         </li>
-                        <li><a href="https://www.google.com">Blog</a></li>
-                        <li>
-                            <!-- <button click="opencontact()">contact</button> -->
-                            <a routerLink='/contact' routerLinkActive="active">Contact</a>
-                            
-                        </li>
-                        <li>
-                          <!-- <button click="opencontact()">contact</button> -->
-                          <a routerLink='/aboutus' routerLinkActive="active">Aboute Us</a>
-                          
-                      </li>
+
+                       
                     </ul>
                 </div>
                 <!-- Nav End -->
@@ -79,7 +75,7 @@
             </div>
             <!-- Favourite Area -->
             <div class="favourite-area">
-                <a href="#" ><img src="assets/img/core-img/heart.svg" alt=""></a>
+                <a  routerLink="/watch"  routerLinkActive="active" ><img src="assets/img/core-img/heart.svg" alt=""><span>{{watchProdCount}}</span></a>
             </div>
             <!-- User Login Info -->
             <div class="user-login-info">
