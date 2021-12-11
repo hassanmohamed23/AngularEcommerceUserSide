@@ -1,26 +1,55 @@
 
 <br>
-<form [formGroup]="loginform" (ngSubmit)="onSubmit()"> 
+<form [formGroup]="loginform" (ngSubmit)="onSubmit()" class="col-md-6" style="margin: auto;"> 
 
     <div class="mb-3">
-        <label for="name" [hidden]="isUserLogged" class="form-label">Enter User Name</label>
-        <input type="text" [hidden]="isUserLogged"  formControlName="Name"  [class.is-invalid]="loginform.controls['Name'].invalid" [class.is-valid]="loginform.controls['Name'].valid" class="form-control" name="" id="name" aria-describedby="emailHelpId" placeholder="">
-        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">Help text</small>
+        <label for="name" [hidden]="isUserLogged" class="form-label">FirstName</label>
+        <input type="text" [hidden]="isUserLogged"  formControlName="firstName"  
+        [class.is-invalid]="loginform.controls['firstName'].invalid" 
+        [class.is-valid]="loginform.controls['firstName'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">uniqe and more than 4 chars</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="name" [hidden]="isUserLogged" class="form-label">LastName</label>
+        <input type="text" [hidden]="isUserLogged"  formControlName="lastName"  
+        [class.is-invalid]="loginform.controls['lastName'].invalid" 
+        [class.is-valid]="loginform.controls['lastName'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">more than 4 chars</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="name" [hidden]="isUserLogged" class="form-label">more than 4 chars</label>
+        <input type="text" [hidden]="isUserLogged"  formControlName="userName"  
+        [class.is-invalid]="loginform.controls['userName'].invalid" 
+        [class.is-valid]="loginform.controls['userName'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">more than 4 chars</small>
       </div>
 
     <div class="mb-3">
-      <label for="email" [hidden]="isUserLogged" class="form-label">Enter your email</label>
-      <input type="email" [hidden]="isUserLogged"  formControlName="Email"  [class.is-invalid]="loginform.controls['Email'].invalid" [class.is-valid]="loginform.controls['Email'].valid" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-      <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">Help text</small>
+      <label for="email" [hidden]="isUserLogged" class="form-label">Email</label>
+      <input type="email" [hidden]="isUserLogged"  formControlName="email" 
+       [class.is-invalid]="loginform.controls['email'].invalid"
+       [class.is-valid]="loginform.controls['email'].valid" class="form-control" 
+       name="" id="" aria-describedby="emailHelpId" placeholder="">
+      <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">uniqe:not used before</small>
     </div>
  
     <div class="mb-3">
-      <label for="pass" [hidden]="isUserLogged" class="form-label">Enter Password</label>
-      <input type="password" [hidden]="isUserLogged" [class.is-invalid]="loginform.controls['Password'].invalid" [class.is-valid]="loginform.controls['Password'].valid" formControlName="Password" class="form-control" name="" id="pass" placeholder="">
+      <label for="pass" [hidden]="isUserLogged" class="form-label">Password</label>
+      <input type="password" [hidden]="isUserLogged" [class.is-invalid]="loginform.controls['password'].invalid" 
+      [class.is-valid]="loginform.controls['password'].valid" formControlName="password"
+       class="form-control" name="" id="" placeholder="">
+       <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">more than 4 chars conains capital and non alphabtic chars</small>
     </div>
+    <div style="color: red;" >{{validationMsg}}</div>
 
+<br>
     <button type="submit" [hidden]="isUserLogged" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
 </form>
 <hr>
-
+<p>{{loginform.value|json}}</p>
   <a name="" id="" [hidden]="!isUserLogged" class="btn btn-primary" routerLink="/User/MyProfile" href="#" role="button">Go To YourProfile</a>

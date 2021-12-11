@@ -18,11 +18,12 @@ export class ProductService {
   //Get All Products
   getAllProducts():Observable<IResponse>
   {
-    const httpheader={
-      headers:new HttpHeaders,
-      'content-type': 'application/JSON'
-    } 
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`);
+    const options ={headers:new HttpHeaders({ 'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
+
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`,options);
   }
   //-----------------------------------------------------------
   //Get Product BY ID 
