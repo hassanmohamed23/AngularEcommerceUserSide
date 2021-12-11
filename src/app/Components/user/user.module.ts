@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes:Routes=[
   {path:'', redirectTo:'/User', pathMatch:'full'},
@@ -22,6 +23,7 @@ const routes:Routes=[
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
      UserRoutingModule,
     RouterModule.forChild(routes)
 
