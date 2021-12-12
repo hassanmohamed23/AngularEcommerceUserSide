@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { IProduct } from 'src/app/ViewModels/iproduct';
+import { IResponse } from 'src/app/ViewModels/iresponse';
 
 @Component({
   selector: 'app-view-product',
@@ -10,7 +11,7 @@ import { IProduct } from 'src/app/ViewModels/iproduct';
   styleUrls: ['./view-product.component.scss']
 })
 export class ViewProductComponent implements OnInit {
-  CatID:number=1;
+  prdID:number=1;
   show:boolean=true;
   product:any;
   constructor(private productService:ProductService,
@@ -19,12 +20,35 @@ export class ViewProductComponent implements OnInit {
   ngOnInit(): void {
     //this.CatID= Number(this.activatedRouter.snapshot.paramMap.get("id"));
     this.activatedRouter.paramMap.subscribe((params)=>{
-      this.CatID=Number(params.get("id"));
-      this.fillProductList(this.CatID)
-    });
-    this.fillProductList(this.CatID);
+      this.prdID=Number(params.get("id"));
+      this.productService.getProductByID(this.prdID).subscribe({
+        next: (Response: IResponse) => {
+          this.product = Response.data;
   
-  }
+          //this.productList.forEach((product,index)=>{
+            this.productService.getProductImgByID(this.product.productId).subscribe({
+              next: (Response: IResponse) => {
+                this.product["img"]=Response.data;
+                //this.prdImgsList[index] = Response.data[0];
+              }
+            })
+          //})
+
+          this.productService.getAllComment(this.product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              this.product["comments"]=Response.data;
+
+              //this.prdImgsList[index] = Response.data[0];
+            }
+          })
+        }
+      });
+  
+    });
+}
+
+
   fillProductList(CatID:number){
     this.productService.getProductByID(CatID).subscribe({
       next:(res)=>{this.product=res.data}

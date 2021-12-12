@@ -43,7 +43,8 @@
       <input type="password" [hidden]="isUserLogged" [class.is-invalid]="loginform.controls['password'].invalid" 
       [class.is-valid]="loginform.controls['password'].valid" formControlName="password"
        class="form-control" name="" id="" placeholder="">
-       <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">more than 4 chars conains capital and non alphabtic chars</small>
+       <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">
+         more than 4 chars at least one capital,small letter,degit,non alphabtic</small>
     </div>
     <div style="color: red;" >{{validationMsg}}</div>
 
