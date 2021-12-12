@@ -31,13 +31,19 @@ export class ViewAllProductComponent implements OnInit {
   ngOnInit(): void {
     this.ProductService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
-        this.productList = Response["data"];
+        this.productList = Response.data;
 
         this.productList.forEach((product,index)=>{
           this.ProductService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
-
-              this.prdImgsList[index] = Response.data[0];
+              product["img"]=Response.data[0];
+              //this.prdImgsList[index] = Response.data[0];
+            }
+          })
+          this.ProductService.getProductOfferByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              product["offer"]=Response.data;
+              //this.prdImgsList[index] = Response.data[0];
             }
           })
         })

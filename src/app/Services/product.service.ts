@@ -96,6 +96,11 @@ export class ProductService {
     return this.httpservice.get<IResponse>(`${environment.APIURL}/Comments/${PrdID}`);
   }
 
+  getProductOfferByID(prdID:number):Observable<IResponse>
+  {
+    
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Offers/${prdID}`);
+  }
 
 
 }

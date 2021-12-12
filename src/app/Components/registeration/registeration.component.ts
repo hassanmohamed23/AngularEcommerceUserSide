@@ -66,15 +66,16 @@ export class RegisterationComponent implements OnInit {
   }
 
   afterLoginResp(response: any) {
-    if (response.IsAuthenticated == true) {
-      sessionStorage.setItem("isUserLogged", "yes");
+    console.log(response.IsAuthenticated);
+    if (response.isAuthenticated == true) {
+      //sessionStorage.setItem("isUserLogged", "yes");
       this.validationMsg = "Register succeeded"
     }
     else {
-      this.isValidMsgHidden = false;
-      sessionStorage.setItem("isUserLogged", "no");
+      //this.isValidMsgHidden = false;
+      //sessionStorage.setItem("isUserLogged", "no");
       this.validationMsg = response.message;
-      console.log(this.isValidMsgHidden);
+      //console.log(this.isValidMsgHidden);
     }
   }
 
