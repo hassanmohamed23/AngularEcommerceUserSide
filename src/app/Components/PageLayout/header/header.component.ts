@@ -45,9 +45,9 @@ export class HeaderComponent implements OnInit {
       }
     });
 
-    this.cartService.getProducts()
+    this.cartService.getCounter()
       .subscribe(res => {
-        this.cartProdCount = res.length;
+        this.cartProdCount = res;
       })
       this.watchlService.getProducts()
       .subscribe(res => {

@@ -3,7 +3,7 @@
     <div class="carousel-inner">
 
       <div class="carousel-item" *ngFor="let im of product.img; let i=index" [ngClass]="{'active': i === 0}">
-        <img class="d-block w-100" [src]="im.src" alt="First slide" style="max-height: 600px;">
+        <img class="d-block" [src]="im.src" alt="First slide" style="max-height: 600px;margin: auto;">
       </div>
 
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -19,16 +19,25 @@
 
     <div class="col-md-5">
 
-      <h5>{{product.name}}</h5>
-
-      <h2>EY{{product.price}}</h2>
+      <h2>{{product.name}}</h2>
+      <h4 *ngIf="product.offer;else priceBlock">EY {{product.offer.newPrice}} / <del class="text-muted">{{product.offer.oldPrice}}</del></h4>
+      <ng-template #priceBlock>
+        <h4>EY{{product.price}}</h4>
+      </ng-template>
       <p class="pt-1">{{product.description}}</p>
-
+      <ul *ngIf="product.rate > 0">
+        <b>Rating:</b>
+        <li style="display: inline;margin: 2px;" *ngFor="let i of [1,2,3,4,5];">
+          <i class="fa-star fa-sm text-primary" [ngClass]="i <= product.rate? 'fas' : 'far'"></i>
+        </li>
+        
+      </ul>
+      <br/><br/>
       <button type="button" (click)="addtocart(product)" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to
         cart</button>
       
       <hr>
-        <h3>comments:</h3>
+        <h3 *ngIf="product.comments > 0">comments:</h3>
       <div *ngFor="let comment of product.comments; let i=index">
         <p>{{comment.description}}</p>
       </div>

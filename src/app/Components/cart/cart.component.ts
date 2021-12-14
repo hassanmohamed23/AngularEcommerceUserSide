@@ -13,10 +13,9 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 })
 export class CartComponent implements OnInit {
   public productList : any = [];
-  public prdImgsList : any = [];
+ // public prdImgsList : any = [];
 
   public grandTotal !: number;
-  public img="https://i.ibb.co/L8Nrb7p/1.jpg"
   constructor(private cartService : CartService, private watchService:WatchListService,
     private ProductService:ProductService) { }
 
@@ -25,14 +24,14 @@ export class CartComponent implements OnInit {
     .subscribe(res=>{
       this.productList = res;
       this.grandTotal = this.cartService.getTotalPrice();
-      this.productList.forEach((product:any,index:number)=>{
-        this.ProductService.getProductImgByID(product.productId).subscribe({
-          next: (Response: IResponse) => {
+    //   this.productList.forEach((product:any,index:number)=>{
+    //     this.ProductService.getProductImgByID(product.productId).subscribe({
+    //       next: (Response: IResponse) => {
 
-            this.prdImgsList[index] = Response.data[0];
-          }
-        })
-    })
+    //         this.prdImgsList[index] = Response.data[0];
+    //       }
+    //     })
+    // })
   })
 }
 

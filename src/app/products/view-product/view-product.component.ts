@@ -42,6 +42,25 @@ export class ViewProductComponent implements OnInit {
               //this.prdImgsList[index] = Response.data[0];
             }
           })
+
+          this.productService.getProductRateByID(this.product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              this.product["rate"]=Response.data;
+
+              //this.prdImgsList[index] = Response.data[0];
+            }
+          })
+
+          this.productService.getProductOfferByID(this.product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              this.product["offer"]=Response.data[0];
+
+              //this.prdImgsList[index] = Response.data[0];
+            }
+          })
+
         }
       });
   

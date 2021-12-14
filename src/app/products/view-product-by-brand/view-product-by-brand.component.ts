@@ -13,44 +13,59 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 export class ViewProductByBrandComponent implements OnInit {
 
   BrandID:number=1;
-  show:boolean=true;
-  productList:any=[];
-  public prdImgsList: any[] = [];
-  constructor(private productService:ProductService,
-    private activatedRouter:ActivatedRoute,
-    private cartService:CartService,
-    private watchService:WatchListService) { }
+  productList: any = [];
+
+  constructor(private productService: ProductService, private activatedRouter: ActivatedRoute, 
+              private cartService: CartService, private watchService: WatchListService) { }
 
   ngOnInit(): void {
-    this.activatedRouter.paramMap.subscribe((params)=>{
-      this.BrandID=Number(params.get("id"));
-      this.fillProductList(this.BrandID)
+    this.activatedRouter.paramMap.subscribe((params) => {
+      this.BrandID = Number(params.get("id"));
+      this.fillProductList(this.BrandID);
     });
-    this.fillProductList(this.BrandID);
-  
+
   }
-  fillProductList(BrandID:number){
+
+
+  fillProductList(BrandID: number) {
+    console.log(BrandID);
     this.productService.getProductsByBrandID(BrandID).subscribe({
       next: (Response: IResponse) => {
+        console.log(Response);
+        this.productList = Response["data"];
 
-      this.productList = Response["data"];
+        this.productList.forEach((product: any, index: any) => {
+          this.productService.getProductImgByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              product["img"]=Response.data[0];
+            }
+          })
 
-      this.productList.forEach((product:any,index:any)=>{
-        this.productService.getProductImgByID(product.productId).subscribe({
-          next: (Response: IResponse) => {
-            
-            this.prdImgsList[index] = Response.data[0];
-          }
+          this.productService.getProductRateByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              product["rate"] = Response.data;
+            }
+          })
+
+          this.productService.getProductOfferByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              product["offer"] = Response.data[0];
+            }
+          })
+
         })
-      })
-    }      
+      }
     });
   }
-  addtocart(item: any){
+
+  addtocart(item: any) {
     this.cartService.addtoCart(item);
   }
 
-  addtowatct(item: any){
+  addtowatct(item: any) {
     this.watchService.addtowatch(item);
   }
+
 }
