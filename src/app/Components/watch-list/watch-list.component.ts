@@ -11,6 +11,9 @@ import { CartService } from 'src/app/Services/cart.service';
   styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
+  public productList : any = [];
+  public prdImgsList : any = [];
+
   public products : any = [];
   public product : any = [];
   public grandTotal !: number;
@@ -24,7 +27,17 @@ export class WatchListComponent implements OnInit {
     this.watchService.getProducts()
     .subscribe(res=>{
       this.products = res;
+      this.productList = res;
+
       this.grandTotal = this.watchService.getTotalPrice();
+      this.productList.forEach((product:any,index:number)=>{
+        this.ProductService.getProductImgByID(product.productId).subscribe({
+          next: (Response: IResponse) => {
+
+            this.prdImgsList[index] = Response.data[0];
+          }
+        })
+    })
     })
 
   }
