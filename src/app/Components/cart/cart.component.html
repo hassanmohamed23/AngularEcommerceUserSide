@@ -1,4 +1,13 @@
-<h1 *ngIf="!productList.length;else elseBlock">no products to show</h1>
+
+<div *ngIf="productList.length==0;else elseBlock" class="container">
+	<div class="row justify-content-center text-center">
+		<div class="col-md-8 col-lg-6">
+			<div class="header">
+				<h2>Cart is empty</h2>
+			</div>
+		</div>
+	</div>
+</div>
 <ng-template #elseBlock>
 
 
@@ -45,6 +54,7 @@
 						<ng-template #priceBlock>
 							<h4>EY{{product.price}}</h4>
 						</ng-template>
+						<br/>
 						<h4>Quantity: {{product.count}}</h4>
 						<!-- <h4 class="product-old-price">$49.99</h4> -->
 						<!-- <h4 class="product-price">EGY{{prd.price}}</h4> -->

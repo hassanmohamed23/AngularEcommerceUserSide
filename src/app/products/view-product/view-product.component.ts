@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { ProductService } from 'src/app/Services/product.service';
+import { WatchListService } from 'src/app/Services/watch-list.service';
 import { IProduct } from 'src/app/ViewModels/iproduct';
 import { IResponse } from 'src/app/ViewModels/iresponse';
 
@@ -15,7 +16,9 @@ export class ViewProductComponent implements OnInit {
   show:boolean=true;
   product:any;
   constructor(private productService:ProductService,
-    private activatedRouter:ActivatedRoute,private cartService:CartService) { }
+    private activatedRouter:ActivatedRoute,
+    private cartService:CartService,
+    private watchService:WatchListService) { }
 
   ngOnInit(): void {
     //this.CatID= Number(this.activatedRouter.snapshot.paramMap.get("id"));
@@ -75,5 +78,8 @@ export class ViewProductComponent implements OnInit {
   }
   addtocart(item: any){
     this.cartService.addtoCart(item);
+  }
+  addtowatct(item: any){
+    this.watchService.addtowatch(item);
   }
 }

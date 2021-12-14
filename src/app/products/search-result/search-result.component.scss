@@ -53,7 +53,9 @@ a:hover {
 		transition: all 0.3s;
 }
 
-
+.product-card{
+  margin: 30px 0px;
+}
 
 /* .section-products #product-1 .part-1::before {
     background: url("https://i.ibb.co/L8Nrb7p/1.jpg") no-repeat center;
@@ -99,7 +101,7 @@ a:hover {
     margin-right: 4px;
 }
 
- .part-1 ul li  {
+ .part-1 ul li {
     display: inline-block;
     width: 40px;
     height: 40px;

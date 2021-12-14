@@ -28,7 +28,13 @@ export class ProductService {
     // 'Access-Control-Allow-Headers': 'Content-Type',
     // 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
 
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`,this.options);
+    //return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`,this.options);
+    const httpheader={
+      headers:new HttpHeaders,
+      'content-type': 'application/JSON'
+    }  
+
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Product`);
   }
   //-----------------------------------------------------------
   //Get Product BY ID 
@@ -105,5 +111,9 @@ export class ProductService {
     return this.httpservice.get<IResponse>(`${environment.APIURL}/Rate/${prdID}`);
   }
 
-
+  getProductBySearch(search:string):Observable<IResponse>
+  {
+    
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Search/${search}`);
+  }
 }

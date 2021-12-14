@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductsComponent } from './products.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 import { ViewAllProductComponent } from './view-all-product/view-all-product.component';
 import { ViewProductByBrandComponent } from './view-product-by-brand/view-product-by-brand.component';
 import { ViewProductByCategoryComponent } from './view-product-by-category/view-product-by-category.component';
@@ -12,8 +13,8 @@ const routes: Routes = [
   { path: 'details/:id', component: ViewProductComponent },
   { path: 'category/:id', component: ViewProductByCategoryComponent },
    { path: 'subcat/:id', component: ViewProductBySubComponent },
-
   { path: 'brand/:id', component: ViewProductByBrandComponent },
+  { path: 'search/:str', component: SearchResultComponent },
 
   
   
