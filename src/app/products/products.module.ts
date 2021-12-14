@@ -8,6 +8,8 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { ViewAllProductComponent } from './view-all-product/view-all-product.component';
 import { ViewProductByBrandComponent } from './view-product-by-brand/view-product-by-brand.component';
 import { ViewProductBySubComponent } from './view-product-by-sub/view-product-by-sub.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,10 +20,13 @@ import { ViewProductBySubComponent } from './view-product-by-sub/view-product-by
     ViewAllProductComponent,
     ViewProductByBrandComponent,
     ViewProductBySubComponent,
+    SearchResultComponent,
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    ReactiveFormsModule,
+
   ]
 })
 export class ProductsModule { }

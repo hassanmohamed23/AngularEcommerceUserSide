@@ -20,7 +20,7 @@ export class ViewAllProductComponent implements OnInit {
   public prdImgsList: any[] = [];
 
   catList: any[] = [];
-  constructor(private ProductService: ProductService, private route: Router,
+  constructor(private productService: ProductService, private route: Router,
     private cartService:CartService,
     private watchService:WatchListService) {
 
@@ -29,23 +29,37 @@ export class ViewAllProductComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.ProductService.getAllProducts().subscribe({
+    this.productService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
         this.productList = Response.data;
 
         this.productList.forEach((product,index)=>{
-          this.ProductService.getProductImgByID(product.productId).subscribe({
+          this.productService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
               product["img"]=Response.data[0];
               //this.prdImgsList[index] = Response.data[0];
             }
           })
-          this.ProductService.getProductOfferByID(product.productId).subscribe({
+
+          this.productService.getProductRateByID(product.productId).subscribe({
             next: (Response: IResponse) => {
-              product["offer"]=Response.data;
+              console.log(Response);
+              product["rate"]=Response.data;
+
               //this.prdImgsList[index] = Response.data[0];
             }
           })
+
+          this.productService.getProductOfferByID(product.productId).subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              product["offer"]=Response.data[0];
+
+              //this.prdImgsList[index] = Response.data[0];
+            }
+          })
+
+
         })
       }
     });

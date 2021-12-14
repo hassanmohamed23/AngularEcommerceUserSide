@@ -11,34 +11,48 @@
 		</div>
 		<div class="row justify-content-evenly">
 			<!-- Single Product -->
-			<div class="col-md-6 col-lg-5 col-xl-3 product-card" *ngFor="let prd of productList; let i=index">
+			<div class="col-md-6 col-lg-5 col-xl-3 product-card" *ngFor="let product of productList; let i=index">
 
 				<div id="product-1" class="single-product">
-                <!-- style="background: url({{prdimg[i].src}}) no-repeat ;
+					<!-- style="background: url({{prdimg[i].src}}) no-repeat ;
 								background-size: cover;"> -->
-					
-								<img [src]="prdImgsList[i].src" style="height:300px; width:100%;max-height: 300px;"> 
-							
-                                <span class="discount">15% off</span>
+
+					<img [src]="product.img.src" style="height:300px; width:100%;max-height: 300px;">
+
+					<span class="discount" *ngIf="product.offer;">{{product.offer.precentage}}% off</span>
 					<div class="part-1">
-						
+
 						<ul style="color: black;">
-							<li (click)="addtocart(prd)"><i class="fas fa-plus"></i><i class="fas fa-shopping-cart"></i></li>
-							<li  (click)="addtowatct(prd)"><i class="fas fa-heart"></i></li>
-							<li>
-								<a [routerLink]="['/products/details',prd.productId]" routerLinkActive="active">
+							<li (click)="addtocart(product)"><i class="fas fa-plus"></i><i class="fas fa-shopping-cart"></i>
+							</li>
+							<li (click)="addtowatct(product)"><i class="fas fa-heart"></i></li>
+							<li title="details">
+								<a [routerLink]="['/products/details',product.productId]" routerLinkActive="active">
 									<i class="fas fa-expand"></i>
 								</a>
-								
+
 							</li>
 						</ul>
 					</div>
 				</div>
 				<hr style="margin:0px">
 				<div class="part-2">
-					<h3 class="product-title">{{prd.name}}</h3>
-					<h4 class="product-old-price">$49.99</h4>
-					<h4 class="product-price">EGY{{prd.price}}</h4>
+					<h3 class="product-title">{{product.name}}</h3>
+					<h4 *ngIf="product.offer;else priceBlock">EY {{product.offer.newPrice}} / <del
+							class="text-muted">{{product.offer.oldPrice}}</del></h4>
+					<ng-template #priceBlock>
+						<h4>EY{{product.price}}</h4>
+					</ng-template>
+
+					<!-- <h4 class="product-old-price">$49.99</h4> -->
+					<!-- <h4 class="product-price">EGY{{prd.price}}</h4> -->
+					<ul *ngIf="product.rate > 0">
+						<b>Rating:</b>
+						<li style="display: inline;margin: 2px;" *ngFor="let i of [1,2,3,4,5];">
+							<i class="fa-star fa-sm text-primary" [ngClass]="i <= product.rate? 'fas' : 'far'"></i>
+						</li>
+
+					</ul>
 				</div>
 
 			</div>

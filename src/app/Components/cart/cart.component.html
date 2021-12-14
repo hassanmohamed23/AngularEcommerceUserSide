@@ -1,61 +1,88 @@
 
-<h1 *ngIf="!productList.length;else elseBlock" >no products to show</h1>
+<div *ngIf="productList.length==0;else elseBlock" class="container">
+	<div class="row justify-content-center text-center">
+		<div class="col-md-8 col-lg-6">
+			<div class="header">
+				<h2>Cart is empty</h2>
+			</div>
+		</div>
+	</div>
+</div>
 <ng-template #elseBlock>
 
 
-<section class="section-products container-fluid" >
-	<div class="container">
-		<div class="row justify-content-center text-center">
-			<div class="col-md-8 col-lg-6">
-				<div class="header">
-					<h3>Featured Product</h3>
-					<h2>Popular Products</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-evenly">
-			<!-- Single Product -->
-			<div class="col-md-6 col-lg-5 col-xl-3 product-card" *ngFor="let prd of productList; let i=index">
-
-				<div id="product-1" class="single-product">
-                <!-- style="background: url({{prdimg[i].src}}) no-repeat ;
-								background-size: cover;"> -->
-					
-								<img [src]="prdImgsList[i].src" style="height:300px; width:100%;max-height: 300px;"> 
-							
-                                <span class="discount">15% off</span>
-					<div class="part-1">
-						
-						<ul style="color: black;">
-							<li  (click)="addtowatct(prd)"><i class="fas fa-heart"></i></li>
-							<li  (click)="removeItem(prd)"><i class="bi bi-trash-fill"></i></li>
-							<li>
-								<a [routerLink]="['/products/details',prd.productId]" routerLinkActive="active">
-									<i class="fas fa-expand"></i>
-								</a>
-								
-							</li>
-						</ul>
+	<section class="section-products container-fluid">
+		<div class="container">
+			<div class="row justify-content-center text-center">
+				<div class="col-md-8 col-lg-6">
+					<div class="header">
+						<h2>Cart Products</h2>
 					</div>
 				</div>
-				<hr style="margin:0px">
-				<div class="part-2">
-					<h3 class="product-title">{{prd.name}}</h3>
-					<h4 class="product-old-price">$49.99</h4>
-					<h4 class="product-price">EGY{{prd.price}}</h4>
+			</div>
+
+			<div class="row justify-content-evenly">
+				<!-- Single Product -->
+				<div class="col-md-6 col-lg-5 col-xl-3 product-card" *ngFor="let product of productList; let i=index">
+
+					<div id="product-1" class="single-product">
+						<!-- style="background: url({{prdimg[i].src}}) no-repeat ;
+								background-size: cover;"> -->
+
+						<img [src]="product.img.src" style="height:300px; width:100%;max-height: 300px;">
+
+						<span class="discount" *ngIf="product.offer;">{{product.offer.precentage}}% off</span>
+						<div class="part-1">
+
+							<ul style="color: black;">
+								<li (click)="addtowatct(product)"><i class="fas fa-heart"></i></li>
+								<li (click)="removeItem(product)"><i class="bi bi-trash-fill"></i></li>
+								<li>
+									<a [routerLink]="['/products/details',product.productId]" routerLinkActive="active">
+										<i class="fas fa-expand"></i>
+									</a>
+
+								</li>
+							</ul>
+						</div>
+					</div>
+					<hr style="margin:0px">
+					<div class="part-2">
+						<h3 class="product-title">{{product.name}}</h3>
+						<h4 *ngIf="product.offer;else priceBlock">EY {{product.offer.newPrice}} / <del
+								class="text-muted">{{product.offer.oldPrice}}</del></h4>
+						<ng-template #priceBlock>
+							<h4>EY{{product.price}}</h4>
+						</ng-template>
+						<br/>
+						<h4>Quantity: {{product.count}}</h4>
+						<!-- <h4 class="product-old-price">$49.99</h4> -->
+						<!-- <h4 class="product-price">EGY{{prd.price}}</h4> -->
+						<ul *ngIf="product.rate > 0">
+							<b>Rating:</b>
+							<li style="display: inline;margin: 2px;" *ngFor="let i of [1,2,3,4,5];">
+								<i class="fa-star fa-sm text-primary" [ngClass]="i <= product.rate? 'fas' : 'far'"></i>
+							</li>
+
+						</ul>
+					</div>
+
 				</div>
+
 
 			</div>
 
 
-		</div>
-	</div>
-    <div class="col-md-8 col-lg-6">
-        <div class="header" style="text-align: center;margin-left: 320px; background-color: slategrey;width: 100%;"><br>
-            <button class="btn btn-warning" (click)="emptycart()">Empty Cart</button><br><br>
-			<h2 class="text text-warning">ToTal Price: {{grandTotal}}</h2><br>
 
-        </div>
-    </div>
-</section>
+
+			<div class="col-md-8 col-lg-6">
+				<div class="header"
+					style="text-align: center;margin-left: 320px; background-color: slategrey;width: 100%;"><br>
+					<button class="btn btn-warning" (click)="emptycart()">Empty Cart</button><br><br>
+					<h2 class="text text-warning">ToTal Price: {{grandTotal}}</h2><br>
+
+				</div>
+			</div>
+		</div>
+	</section>
 </ng-template>
