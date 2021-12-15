@@ -49,7 +49,7 @@
 				<hr style="margin:0px">
 				<div class="part-2">
 					<h3 class="product-title">{{product.name}}</h3>
-					<h4 *ngIf="product.offer;else priceBlock">EY {{product.offer.newPrice}} / <del
+					<h4 *ngIf="product.offer;else priceBlock">EGP {{product.offer.newPrice}} / <del
 							class="text-muted">{{product.offer.oldPrice}}</del></h4>
 					<ng-template #priceBlock>
 						<h4>EY{{product.price}}</h4>

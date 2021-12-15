@@ -3,15 +3,16 @@
   <div class="mb-3">
     <label for="name"  class="form-label">UserName</label>
     <input type="text"  formControlName="userName"
-      [class.is-invalid]="loginform.controls['userName'].invalid"
-      [class.is-valid]="loginform.controls['userName'].valid" class="form-control" name="" id="name"
+      [class.is-invalid]="loginform.controls['userName'].invalid && loginform.controls['userName'].dirty"
+      [class.is-valid]="loginform.controls['userName'].valid" 
+      class="form-control" name="" id="name"
       aria-describedby="emailHelpId" placeholder="">
   </div>
 
 
   <div class="mb-3">
     <label for="pass"  class="form-label">Password</label>
-    <input type="password"  [class.is-invalid]="loginform.controls['password'].invalid"
+    <input type="password"  [class.is-invalid]="loginform.controls['password'].invalid && loginform.controls['password'].dirty"
       [class.is-valid]="loginform.controls['password'].valid" formControlName="password" class="form-control" name=""
       id="" placeholder="">
   </div>
@@ -23,4 +24,3 @@
   <div><button type="submit" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button></div>
 </form>
 
-<p>{{loginform.value|json}}</p>

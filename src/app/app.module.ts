@@ -12,6 +12,8 @@ import { HeaderComponent } from './Components/PageLayout/header/header.component
 import { FooterComponent } from './Components/PageLayout/footer/footer.component';
 import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.component';
 import { WatchListComponent } from './Components/watch-list/watch-list.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     RegisterationComponent,
       SideBarComponent,
-      WatchListComponent
+      WatchListComponent,
+      CheckoutComponent
   ],
   imports: [
     BrowserModule,
