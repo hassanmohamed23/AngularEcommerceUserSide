@@ -1,22 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutUsComponent } from './Components/about-us/about-us.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './Components/cart/cart.component';
-// import { LoginComponent } from './Components/User/login/login.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
 import { HeaderComponent } from './Components/PageLayout/header/header.component';
 import { FooterComponent } from './Components/PageLayout/footer/footer.component';
 import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.component';
 import { WatchListComponent } from './Components/watch-list/watch-list.component';
-
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +36,6 @@ import { WatchListComponent } from './Components/watch-list/watch-list.component
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    
     HttpClientModule
   ],
   providers: [],
