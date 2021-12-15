@@ -14,10 +14,10 @@ import { ISubCategory } from '../ViewModels/isub-category';
 })
 export class ProductService {
 
-  options ={headers:new HttpHeaders({ 'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
+  // options ={headers:new HttpHeaders({ 'Content-Type': 'application/json',
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Access-Control-Allow-Headers': 'Content-Type',
+  //   'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
   constructor(private httpservice:HttpClient) { }
   //-----------------------------------------------------------
   //Get All Products
@@ -46,7 +46,7 @@ export class ProductService {
   getProductImgByID(prdID:number):Observable<IResponse>
   {
     
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/Productimg/${prdID}`,this.options);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Productimg/${prdID}`);
   }
    //-----------------------------------------------------------
   //Get Products BY Category ID
@@ -58,29 +58,26 @@ export class ProductService {
   //Get Products BY SubCategory ID
   getProductsBySubCatID(SubCatID:number):Observable<IResponse>
   {
-    const httpheader={
-      headers:new HttpHeaders,
-      'content-type': 'application/JSON'
-    } 
+
     return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductBySubCat/${SubCatID}`);
   }
   //-----------------------------------------------------------
   //Get Products BY Brand ID
   getProductsByBrandID(BrandID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId/${BrandID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductByBrandId/${BrandID}`);
   }
   //-----------------------------------------------------------
   //Get All Categorys 
   getAllCategory():Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/Category`,this.options);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Category`);
   }
    //-----------------------------------------------------------
   //Get All SubCategorys 
   getAllSubCategory():Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}/SubCategory`,this.options);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/SubCategory`);
   }
   getSubCatByCatID(CatID:number):Observable<IResponse>
   {

@@ -21,7 +21,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="name" [hidden]="isUserLogged" class="form-label">more than 4 chars</label>
+        <label for="name" [hidden]="isUserLogged" class="form-label">User Name</label>
         <input type="text" [hidden]="isUserLogged"  formControlName="userName"  
         [class.is-invalid]="loginform.controls['userName'].invalid" 
         [class.is-valid]="loginform.controls['userName'].valid" class="form-control" 
@@ -52,5 +52,4 @@
     <button type="submit" [hidden]="isUserLogged" [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
 </form>
 <hr>
-<p>{{loginform.value|json}}</p>
-  <a name="" id="" [hidden]="!isUserLogged" class="btn btn-primary" routerLink="/User/MyProfile" href="#" role="button">Go To YourProfile</a>
+  <a name="" id="" [hidden]="!isUserLogged" class="btn btn-primary" routerLink="/User/MyProfile"  role="button">Go To YourProfile</a>

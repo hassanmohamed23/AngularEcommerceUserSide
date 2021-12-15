@@ -15,9 +15,9 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 })
 export class ViewAllProductComponent implements OnInit {
 
-
+totalLength:any;
+page:number=1;
   public productList: any[] = [];
-  public prdImgsList: any[] = [];
 
   catList: any[] = [];
   constructor(private productService: ProductService, private route: Router,
@@ -32,7 +32,7 @@ export class ViewAllProductComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: (Response: IResponse) => {
         this.productList = Response.data;
-
+        this.totalLength=this.productList.length;
         this.productList.forEach((product,index)=>{
           this.productService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
@@ -58,8 +58,7 @@ export class ViewAllProductComponent implements OnInit {
               //this.prdImgsList[index] = Response.data[0];
             }
           })
-
-
+          
         })
       }
     });

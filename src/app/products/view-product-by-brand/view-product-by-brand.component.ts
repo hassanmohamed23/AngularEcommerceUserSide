@@ -12,31 +12,31 @@ import { IResponse } from 'src/app/ViewModels/iresponse';
 })
 export class ViewProductByBrandComponent implements OnInit {
 
-  BrandID:number=1;
+  subCatID:number=1;
   productList: any = [];
+  brandList: any[] = [];
 
   constructor(private productService: ProductService, private activatedRouter: ActivatedRoute, 
               private cartService: CartService, private watchService: WatchListService) { }
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((params) => {
-      this.BrandID = Number(params.get("id"));
-      this.fillProductList(this.BrandID);
+      this.subCatID = Number(params.get("id"));
+      this.fillProductList(this.subCatID)
     });
 
+
   }
-
-
-  fillProductList(BrandID: number) {
-    console.log(BrandID);
-    this.productService.getProductsByBrandID(BrandID).subscribe({
+  fillProductList(CatID: number) {
+    this.productService.getProductsByBrandID(CatID).subscribe({
       next: (Response: IResponse) => {
-        console.log(Response);
+
         this.productList = Response["data"];
 
         this.productList.forEach((product: any, index: any) => {
           this.productService.getProductImgByID(product.productId).subscribe({
             next: (Response: IResponse) => {
+
               product["img"]=Response.data[0];
             }
           })
@@ -45,6 +45,7 @@ export class ViewProductByBrandComponent implements OnInit {
             next: (Response: IResponse) => {
               console.log(Response);
               product["rate"] = Response.data;
+
             }
           })
 
@@ -52,8 +53,15 @@ export class ViewProductByBrandComponent implements OnInit {
             next: (Response: IResponse) => {
               console.log(Response);
               product["offer"] = Response.data[0];
+
             }
           })
+          this.productService.getAllBrands().subscribe({
+            next: (Response: IResponse) => {
+              console.log(Response);
+              this.brandList = Response["data"];
+            }
+          });
 
         })
       }
