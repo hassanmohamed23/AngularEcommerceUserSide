@@ -46,11 +46,9 @@
        <small [hidden]="isUserLogged" id="emailHelpId" class="form-text text-muted">
          more than 4 chars at least one capital,small letter,degit,non alphabtic</small>
     </div>
-    <div style="color: red;" >{{validationMsg}}</div>
 
 <br>
     <button type="submit"  [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
 </form>
 <hr>
-<p>{{loginform.value|json}}</p>
-  <a name="" id="" [hidden]="!isUserLogged" class="btn btn-primary" routerLink="/User/MyProfile" href="#" role="button">Go To YourProfile</a>
+<button type="submit"  (click)="addOrder()" class="btn btn-primary">add order</button>

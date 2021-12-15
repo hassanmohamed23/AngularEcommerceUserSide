@@ -1,11 +1,11 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+
 import { IResponse } from 'src/app/ViewModels/iresponse';
 import { ProductService } from 'src/app/Services/product.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { WatchListService } from 'src/app/Services/watch-list.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',

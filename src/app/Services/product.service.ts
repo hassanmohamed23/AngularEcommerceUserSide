@@ -117,16 +117,17 @@ export class ProductService {
     return this.httpservice.get<IResponse>(`${environment.APIURL}/Search/${search}`);
   }
 
-  addOrder(totalPrice:number,userID:number,userAddress:string="",orderDate=Date.now(),orderStatus:string="onShipper"){
+  addOrder(totalPrice:number=100,userID:number=1,userAddress:string="Sohag",orderDate=Date.now(),orderStatus:string="inShipper"){
     const body=JSON.stringify({
       "totalPrice": totalPrice,
       "userAddress": userAddress,
       "orderDate": orderDate.toString(),
       "orderStatus": orderStatus,
-      "userID":userID
+      "userID":userID,
+      "shipperId":1
     });
     console.log(body)  
-    return this.httpservice.post(`${environment.APIURL}/Order/Add`, body,this.options);
+    return this.httpservice.post(`${environment.APIURL}/Order/add`, body,this.options);
   }
 
   

@@ -10,6 +10,7 @@ import { ViewProductByBrandComponent } from './view-product-by-brand/view-produc
 import { ViewProductBySubComponent } from './view-product-by-sub/view-product-by-sub.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProductsRoutingModule,
     ReactiveFormsModule,
-
+    NgxPaginationModule
   ]
 })
 export class ProductsModule { }

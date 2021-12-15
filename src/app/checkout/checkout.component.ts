@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { render } from 'creditcardpayments/creditCardPayments';
 import { CartService } from '../Services/cart.service';
+import { ProductService } from '../Services/product.service';
 
 
 @Component({
@@ -13,7 +14,9 @@ export class CheckoutComponent implements OnInit {
 
   public productList : any = [];
   public grandTotal !: number;
-  constructor(private cartService : CartService) { 
+  userID=Number(sessionStorage.getItem("userID"));
+  userAddress="sohag";
+  constructor(private cartService : CartService,private productService:ProductService) { 
       
       
     }
@@ -27,11 +30,23 @@ export class CheckoutComponent implements OnInit {
     render({
       id:"#paymentButtons",
       currency:"EGP",
-      value:this.cartService.getTotalPrice().toString(),
+      value:"5",//this.cartService.getTotalPrice().toString(),
       onApprove:(details)=>{
-        alert("succees pay");
+        this.productService.addOrder(this.grandTotal,this.userID,this.userAddress)
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            // this.afterLoginResp(res);
+          }, error: (error) => {
+            console.log(error);
+            // this.validationMsg = "error occured try again"
+          }
+        });
       }
     });
   }
   
+  addOrder(totalPrice:number, userID:number, userAddress:string=""){
+    this.productService.addOrder(totalPrice, userID, userAddress);
+  }
 }

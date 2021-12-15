@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ProductService } from 'src/app/Services/product.service';
 import { UserService } from 'src/app/Services/user.service';
 
 
@@ -17,7 +18,7 @@ export class RegisterationComponent implements OnInit {
   isValidMsgHidden = true;
   validationMsg = "";
   constructor(private fb: FormBuilder,
-    private router: Router, private userService: UserService) {
+    private router: Router, private userService: UserService,private productService:ProductService) {
 
   }
 
@@ -63,7 +64,8 @@ export class RegisterationComponent implements OnInit {
       sessionStorage.setItem("isUserLogged", "yes");
       sessionStorage.setItem("userID", response.userID);
       sessionStorage.setItem("username", response.username);
-      this.validationMsg = "Register succeeded"
+      this.router.navigate(['User/Profile']);
+      //this.validationMsg = "Register succeeded"
     }
     else {
       //this.isValidMsgHidden = false;
@@ -71,6 +73,19 @@ export class RegisterationComponent implements OnInit {
       this.validationMsg = response.message;
       //console.log(this.isValidMsgHidden);
     }
+  }
+
+  addOrder(){
+    this.productService.addOrder()
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            // this.afterLoginResp(res);
+          }, error: (error) => {
+            console.log(error);
+            // this.validationMsg = "error occured try again"
+          }
+        });
   }
 
 }
