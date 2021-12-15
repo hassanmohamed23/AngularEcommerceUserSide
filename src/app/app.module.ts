@@ -10,7 +10,6 @@ import { CartComponent } from './Components/cart/cart.component';
 import { RegisterationComponent } from './Components/registeration/registeration.component';
 import { HeaderComponent } from './Components/PageLayout/header/header.component';
 import { FooterComponent } from './Components/PageLayout/footer/footer.component';
-import { SideBarComponent } from './Components/PageLayout/side-bar/side-bar.component';
 import { WatchListComponent } from './Components/watch-list/watch-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,9 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CartComponent,
     HeaderComponent,
     FooterComponent,
-
     RegisterationComponent,
-      SideBarComponent,
       WatchListComponent
   ],
   imports: [
