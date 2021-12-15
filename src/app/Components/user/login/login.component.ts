@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginform: FormGroup = {} as FormGroup; 
 
-  isValidMsgHidden: boolean = true;
+  //isValidMsgHidden: boolean = true;
   validationMsg = "";
   constructor(private formBuilder: FormBuilder,private router: Router,
               private userService: UserService, private p: ProductService) {
@@ -46,14 +46,15 @@ export class LoginComponent implements OnInit {
   afterLoginResp(response:any){
     console.log(response.isAuthenticated);
     if (response.isAuthenticated == true) {
-      //sessionStorage.setItem("isUserLogged", "yes");
-      this.validationMsg = "Login succeeded"
+      sessionStorage.setItem("isUserLogged", "yes");
+      sessionStorage.setItem("userID", response.userID);
+      sessionStorage.setItem("username", response.username);
+      this.router.navigate(['User/Profile']);
+      //this.validationMsg = "Login succeeded"
     }
     else {
-      //this.isValidMsgHidden = false;
-      //sessionStorage.setItem("isUserLogged", "no");
+      sessionStorage.setItem("isUserLogged", "no");
       this.validationMsg = response.message;
-      //console.log(this.isValidMsgHidden);
     }
   }
   

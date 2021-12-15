@@ -20,7 +20,7 @@
     <div class="col-md-5">
 
       <h2>{{product.name}}</h2>
-      <h4 *ngIf="product.offer;else priceBlock">EY {{product.offer.newPrice}} / <del class="text-muted">{{product.offer.oldPrice}}</del></h4>
+      <h4 *ngIf="product.offer;else priceBlock">EGP {{product.offer.newPrice}} / <del class="text-muted">{{product.offer.oldPrice}}</del></h4>
       <ng-template #priceBlock>
         <h4>EGY{{product.price}}</h4>
       </ng-template>
