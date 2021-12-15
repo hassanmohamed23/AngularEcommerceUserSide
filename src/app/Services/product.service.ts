@@ -23,7 +23,7 @@ export class ProductService {
   //Get All Products
   getAllProducts():Observable<IResponse>
   {
-    // const options ={headers:new HttpHeaders({ 'Content-Type': 'application/json',
+    const options ={headers:new HttpHeaders({ 'Content-Type': 'application/json'})};
     // 'Access-Control-Allow-Origin': '*',
     // 'Access-Control-Allow-Headers': 'Content-Type',
     // 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
@@ -65,11 +65,6 @@ export class ProductService {
     return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductBySubCat/${SubCatID}`);
   }
   //-----------------------------------------------------------
-  //Get Products BY Brand ID
-  // getProductsByBrandID(BrandID:number):Observable<IResponse>
-  // {
-  //   return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId/${BrandID}`);
-  // }
 
   getProductsByBrandID(BrandID:number):Observable<IResponse>
   {
@@ -121,4 +116,18 @@ export class ProductService {
     
     return this.httpservice.get<IResponse>(`${environment.APIURL}/Search/${search}`);
   }
+
+  addOrder(totalPrice:number,userID:number,userAddress:string="",orderDate=Date.now(),orderStatus:string="onShipper"){
+    const body=JSON.stringify({
+      "totalPrice": totalPrice,
+      "userAddress": userAddress,
+      "orderDate": orderDate.toString(),
+      "orderStatus": orderStatus,
+      "userID":userID
+    });
+    console.log(body)  
+    return this.httpservice.post(`${environment.APIURL}/Order/Add`, body,this.options);
+  }
+
+  
 }
