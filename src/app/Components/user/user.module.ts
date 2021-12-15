@@ -8,10 +8,12 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserAthunGuard } from 'src/app/gaurd/user-athun.guard';
 
 const routes:Routes=[
   {path:'', redirectTo:'/User', pathMatch:'full'},
-  {path:'Login', component: LoginComponent}
+  {path:'Login', component: LoginComponent},
+  {path:'Profile', component: ViewProfileComponent}
 ];
 
 @NgModule({

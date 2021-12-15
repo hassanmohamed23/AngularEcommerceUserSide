@@ -38,15 +38,7 @@ export class RegisterationComponent implements OnInit {
 
     console.log(this.loginform.get("Email"));
     console.log(this.loginform.get("Password"));
-    //this.usrApi.Register(this.loginform.controls["Email"].value, this.loginform.controls["Password"].value,
-    // this.loginform.controls["Name"].value).subscribe({
-    //   next:(res)=>{
-    //    this.router.navigate(["/Login"]);
-    //   }
-    // });
 
-    //   this.isUserLogged = this.userloginservice.loginStatus();
-    //   console.log(this.isUserLogged)
   }
 
   onSubmit() {
@@ -68,12 +60,14 @@ export class RegisterationComponent implements OnInit {
   afterLoginResp(response: any) {
     console.log(response.IsAuthenticated);
     if (response.isAuthenticated == true) {
-      //sessionStorage.setItem("isUserLogged", "yes");
+      sessionStorage.setItem("isUserLogged", "yes");
+      sessionStorage.setItem("userID", response.userID);
+      sessionStorage.setItem("username", response.username);
       this.validationMsg = "Register succeeded"
     }
     else {
       //this.isValidMsgHidden = false;
-      //sessionStorage.setItem("isUserLogged", "no");
+      sessionStorage.setItem("isUserLogged", "no");
       this.validationMsg = response.message;
       //console.log(this.isValidMsgHidden);
     }

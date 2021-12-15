@@ -66,9 +66,14 @@ export class ProductService {
   }
   //-----------------------------------------------------------
   //Get Products BY Brand ID
+  // getProductsByBrandID(BrandID:number):Observable<IResponse>
+  // {
+  //   return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId/${BrandID}`);
+  // }
+
   getProductsByBrandID(BrandID:number):Observable<IResponse>
   {
-    return this.httpservice.get<IResponse>(`${environment.APIURL}​/ProductByBrandId/${BrandID}`);
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/ProductByBrandId/${BrandID}`);
   }
   //-----------------------------------------------------------
   //Get All Categorys 

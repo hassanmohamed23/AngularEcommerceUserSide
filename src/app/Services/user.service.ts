@@ -36,4 +36,8 @@ export class UserService {
     console.log(body)  
     return this.httpservice.post(`${environment.APIURL}/Signup`, body,this.options);
   }
+
+  getUserInfo(userID:number){
+    return this.httpservice.get(`${environment.APIURL}/Profile/${userID}`);
+  }
 }

@@ -17,22 +17,19 @@ export class CartComponent implements OnInit {
 
   public grandTotal !: number;
   constructor(private cartService : CartService, private watchService:WatchListService,
-    private ProductService:ProductService) { }
+    private ProductService:ProductService) { 
+      
+      
+    }
 
   ngOnInit(): void {
     this.cartService.getProducts()
     .subscribe(res=>{
       this.productList = res;
       this.grandTotal = this.cartService.getTotalPrice();
-    //   this.productList.forEach((product:any,index:number)=>{
-    //     this.ProductService.getProductImgByID(product.productId).subscribe({
-    //       next: (Response: IResponse) => {
-
-    //         this.prdImgsList[index] = Response.data[0];
-    //       }
-    //     })
-    // })
   })
+
+  
 }
 
   removeItem(item: any){
