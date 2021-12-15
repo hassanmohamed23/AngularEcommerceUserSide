@@ -22,7 +22,7 @@
       <h2>{{product.name}}</h2>
       <h4 *ngIf="product.offer;else priceBlock">EGP {{product.offer.newPrice}} / <del class="text-muted">{{product.offer.oldPrice}}</del></h4>
       <ng-template #priceBlock>
-        <h4>EY{{product.price}}</h4>
+        <h4>EGY{{product.price}}</h4>
       </ng-template>
       <p class="pt-1">{{product.description}}</p>
       <ul *ngIf="product.rate > 0">
@@ -34,8 +34,8 @@
       </ul>
       <br/><br/>
       <button type="button" (click)="addtocart(product)" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to
-        cart</button>
-        <button type="button" (click)="addtowatct(product)" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to WatchList</button>
+        cart</button><br>
+        <button type="button" (click)="addtowatct(product)" class="btn btn-light btn-md mr-1 mb-2 btn-dark">Add to Your Favourite</button>
       <hr>
         <h3 *ngIf="product.comments > 0">comments:</h3>
       <div *ngFor="let comment of product.comments; let i=index">

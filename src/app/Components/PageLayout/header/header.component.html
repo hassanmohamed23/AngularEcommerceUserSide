@@ -5,7 +5,7 @@
         <!-- Classy Menu -->
         <nav class="classy-navbar" id="essenceNav">
             <!-- Logo -->
-            <a class="nav-brand" href="#">I-TECH</a>
+            <a class="nav-brand" routerLink="/home" routerLinkActive="active">I-TECH</a>
             <!-- Navbar Toggler -->
             <div class="classy-navbar-toggler">
                 <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -19,7 +19,7 @@
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a>cat</a>
+                        <li><a>Categories</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4" *ngFor="let item of catList">
                                     <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}     
@@ -28,7 +28,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a>subc</a>
+                        <li><a>SubCategories</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4" *ngFor="let sub of SubcatList">
                                     <li class="title"><a [routerLink]="['/products/subcat',sub.subCategoryId]" routerLinkActive="active">{{sub.subCatName}}</a>
@@ -36,21 +36,14 @@
                                 </ul>  
                             </div>
                         </li>
-                        <li><a>Brand</a>
-                            <div class="megamenu">
-                                <ul class="single-mega cn-col-4" *ngFor="let brd of brandList">
-                                    <li class="title"><a [routerLink]="['/products/brand',brd.brandId]" routerLinkActive="active">{{brd.brandName}}</a>
-                                    </li>
-                                </ul>  
-                            </div>
-                        </li>
+
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
                                 <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
                                 <li><a class="" routerLink="/products" routerLinkActive="active">Products</a>
                                 </li>
-                                <li><a [routerLink]="['/products/details/2']" routerLinkActive="active">Product Details</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li><a [routerLink]="['/products/details/1']" routerLinkActive="active">Product Details</a></li>
+                                <li><a [routerLink]="['/products/brand/1']" routerLinkActive="active">Brands</a></li>
                                 <li><a routerLink='/aboutus' routerLinkActive="active">ِAboute Us</a></li>
                                 <li><a routerLink='/Register' routerLinkActive="active">Register</a></li>
                                 <li><a routerLink='/User/Login' routerLinkActive="active">Login</a></li>
