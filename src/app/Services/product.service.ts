@@ -8,6 +8,7 @@ import { IComment } from '../ViewModels/icomment';
 import { IProduct } from '../ViewModels/iproduct';
 import { IResponse } from '../ViewModels/iresponse';
 import { ISubCategory } from '../ViewModels/isub-category';
+import { DatePipe } from '@angular/common'
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ProductService {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})}  
-  constructor(private httpservice:HttpClient) { }
+  constructor(private httpservice:HttpClient,private datepipe: DatePipe) { }
   //-----------------------------------------------------------
   //Get All Products
   getAllProducts():Observable<IResponse>
@@ -117,14 +118,19 @@ export class ProductService {
     return this.httpservice.get<IResponse>(`${environment.APIURL}/Search/${search}`);
   }
 
-  addOrder(totalPrice:number=100,userID:number=1,userAddress:string="Sohag",orderDate=Date.now(),orderStatus:string="inShipper"){
+  addOrder(totalPrice:number,userID:number,userCity:string,userAddress:string,userPhone:string){
+    let date=new Date();
+    let latest_date =this.datepipe.transform(date,'yyyy-MM-dd');
     const body=JSON.stringify({
       "totalPrice": totalPrice,
-      "userAddress": userAddress,
-      "orderDate": orderDate.toString(),
-      "orderStatus": orderStatus,
+      "orderStatus": "inShipper",
       "userID":userID,
-      "shipperId":1
+      "userCity":userCity,
+      "userAddress":userAddress,
+      "userPhone":userPhone,
+      "shipperId":2,
+      "PaymentId":2,
+      "OrderDate":latest_date
     });
     console.log(body)  
     return this.httpservice.post(`${environment.APIURL}/Order/add`, body,this.options);

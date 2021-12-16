@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   catList: any[] = [];
   SubcatList: any[] = [];
   brandList: any[] = [];
-
+  userName=sessionStorage.getItem("username");
   CatId: any;
   public cartProdCount: number = 0;
   public watchProdCount: number = 0;

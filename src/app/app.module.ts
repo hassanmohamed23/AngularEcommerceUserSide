@@ -16,6 +16,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {DatePipe} from '@angular/common';    
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
