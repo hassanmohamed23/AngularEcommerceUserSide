@@ -50,5 +50,6 @@
 <br>
     <button type="submit"  [disabled]="loginform.invalid" class="btn btn-primary">Submit</button>
 </form>
-<hr>
-<button type="submit"  (click)="addOrder()" class="btn btn-primary">add order</button>
+<br>
+<div style="color: red;">{{validationMsg}}</div>
+<br>

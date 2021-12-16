@@ -25,7 +25,6 @@ export class UserService {
   }
 
   signUp(firstName:string="",lastName:string="",userName:string="",email:string="",password:string=""): Observable<any> {
-    
     const body=JSON.stringify({
       "firstName": firstName,
       "lastName": lastName,

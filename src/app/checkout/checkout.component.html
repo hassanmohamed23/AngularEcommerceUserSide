@@ -1,19 +1,46 @@
-<div >
-    <div *ngFor="let product of productList;">
-        <!-- <h2>your invoice</h2>
-        <h4 class="product-title">productName: {{product.name}}</h4>
-        <h5 *ngIf="product.offer;else priceBlock">price: EY {{product.offer.newPrice}} </h5>
-        <ng-template #priceBlock>
-            <h4>EY{{product.price}}</h4>
-        </ng-template>
-        <h5>Quantity: {{product.count}}</h5>  -->
-        <h3>total price : {{grandTotal}}</h3>
+<div class="col-md-6" style="margin: auto;">
+    <div >
+        <h3>total price :EGP {{grandTotal}}</h3>
+        
+<br>
+<h4>information for delivery</h4>
+<form [formGroup]="deliveryForm"  > 
 
+    <div class="mb-3">
+        <label for="name" class="form-label">City</label>
+        <input type="text"  formControlName="city"  
+        [class.is-invalid]="deliveryForm.controls['city'].invalid && deliveryForm.controls['city'].dirty"
+        [class.is-valid]="deliveryForm.controls['city'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Address</label>
+        <input type="text"  formControlName="address"  
+        [class.is-invalid]="deliveryForm.controls['address'].invalid && deliveryForm.controls['address'].dirty"
+        [class.is-valid]="deliveryForm.controls['address'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+      </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Concat Number</label>
+        <input type="text"  formControlName="phone"  
+        [class.is-invalid]="deliveryForm.controls['phone'].invalid && deliveryForm.controls['phone'].dirty"
+        [class.is-valid]="deliveryForm.controls['phone'].valid" class="form-control" 
+        name="" id="name" aria-describedby="emailHelpId" placeholder="">
+      </div>    
+
+<br>
+</form>
+<hr>
+{{deliveryForm.value|json}}
+
+    </div>
+    <div id="paymentButtons" [hidden]="deliveryForm.invalid">
+    
     </div>
 </div>
 
-<div id="paymentButtons">
-    
-</div>
+
 
 

@@ -15,7 +15,6 @@ export class RegisterationComponent implements OnInit {
   loginform: FormGroup = {} as FormGroup;
 
   isUserLogged: boolean = false;
-  isValidMsgHidden = true;
   validationMsg = "";
   constructor(private fb: FormBuilder,
     private router: Router, private userService: UserService,private productService:ProductService) {
@@ -30,8 +29,6 @@ export class RegisterationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
-
-
 
   }
 
@@ -49,10 +46,8 @@ export class RegisterationComponent implements OnInit {
       this.loginform.get("password")?.value)
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.afterLoginResp(res);
         }, error: (error) => {
-          console.log(error);
           this.validationMsg = "error occured try again"
         }
       });
@@ -65,27 +60,12 @@ export class RegisterationComponent implements OnInit {
       sessionStorage.setItem("userID", response.userID);
       sessionStorage.setItem("username", response.username);
       this.router.navigate(['User/Profile']);
-      //this.validationMsg = "Register succeeded"
     }
     else {
-      //this.isValidMsgHidden = false;
       sessionStorage.setItem("isUserLogged", "no");
       this.validationMsg = response.message;
-      //console.log(this.isValidMsgHidden);
     }
   }
 
-  addOrder(){
-    this.productService.addOrder()
-        .subscribe({
-          next: (res) => {
-            console.log(res);
-            // this.afterLoginResp(res);
-          }, error: (error) => {
-            console.log(error);
-            // this.validationMsg = "error occured try again"
-          }
-        });
-  }
 
 }
