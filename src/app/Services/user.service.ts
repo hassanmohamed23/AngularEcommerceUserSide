@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IResponse } from '../ViewModels/iresponse';
 
@@ -8,16 +9,30 @@ import { IResponse } from '../ViewModels/iresponse';
   providedIn: 'root'
 })
 export class UserService {
-
+  public userName:any ="";
+  public userNameSub = new BehaviorSubject<string>("");
   private isUserLogged:boolean=false;
   private options ={headers:new HttpHeaders({ 'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'})} 
  
-  constructor(private httpservice:HttpClient) { }
+  constructor(private httpservice:HttpClient,private router: Router) { }
 
+  getUserName(){
+    return this.userNameSub.asObservable();
+  }
 
+  setUserName(){
+    this.userName=sessionStorage.getItem("username");
+    this.userNameSub.next(this.userName);
+  }
+  logout(){
+    sessionStorage.clear();
+    this.setUserName();
+    this.router.navigate(['/User/Login']);
+
+  }
   login(userName:string="",password:string=""): Observable<any> {
     const body=JSON.stringify({'UserName':userName,'Password':password});
     console.log(body)  

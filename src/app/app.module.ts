@@ -29,7 +29,7 @@ import {DatePipe} from '@angular/common';
     FooterComponent,
     RegisterationComponent,
 
-      SideBarComponent,
+      
       WatchListComponent,
       CheckoutComponent
   ],

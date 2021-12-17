@@ -37,17 +37,13 @@
                             </div>
                         </li>
 
-                        <li><a href="#">Pages</a>
+                        <li><a href="#">{{userName}}<img src="assets/img/core-img/user.svg" width="25" height="25" class="rounded-circle"></a>
+                            
                             <ul class="dropdown">
-                                <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                                <li><a class="" routerLink="/products" routerLinkActive="active">Products</a>
-                                </li>
-                                <li><a [routerLink]="['/products/details/1']" routerLinkActive="active">Product Details</a></li>
-                                <li><a [routerLink]="['/products/brand/1']" routerLinkActive="active">Brands</a></li>
-                                <li><a routerLink='/aboutus' routerLinkActive="active">ِAboute Us</a></li>
-                                <li><a routerLink='/Register' routerLinkActive="active">Register</a></li>
-                                <li><a routerLink='/User/Login' routerLinkActive="active">Login</a></li>
-                                <li><a routerLink='/contact' routerLinkActive="active">Contact</a></li>
+                                <li *ngIf="!userName"><a routerLink="/User/Login"  routerLinkActive="active" ><i class="bi bi-box-arrow-in-right"></i>Sign in</a> </li>
+                            <li *ngIf="!userName"><a routerLink="/Register"  routerLinkActive="active" ><i class="bi bi-dash-circle-fill"></i>Register</a> </li>
+                            <li *ngIf="userName"><a routerLink="/User/Profile"  routerLinkActive="active" ><i class="fa fa-eye"></i>View Profile</a> </li>
+                            <li *ngIf="userName"><button type="botton" class="btn btn-light" (click)="signout()"><i class="fa fa-power-off"></i>Sign out</button> </li>
                             </ul>
                         </li>
 
@@ -70,11 +66,7 @@
             <div class="favourite-area">
                 <a  routerLink="/watch"  routerLinkActive="active" ><img src="assets/img/core-img/heart.svg" alt=""><span>{{watchProdCount}}</span></a>
             </div>
-            <!-- User Login Info -->
-            <div class="user-login-info dropdown">
-                <a><img src="assets/img/core-img/user.svg"  alt=""></a>
 
-            </div>
             <!-- Cart Area -->
             <div class="cart-area">
                 <a  id="essenceCartBtn" routerLink="/cart"  routerLinkActive="active"><img src="assets/img/core-img/bag.svg" alt=""> <span>{{cartProdCount}}</span></a>
