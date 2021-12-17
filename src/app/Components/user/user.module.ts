@@ -9,11 +9,13 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserAthunGuard } from 'src/app/gaurd/user-athun.guard';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
 
 const routes:Routes=[
   {path:'', redirectTo:'/User', pathMatch:'full'},
   {path:'Login', component: LoginComponent},
-  {path:'Profile', component: ViewProfileComponent}
+  {path:'Profile', component: ViewProfileComponent,canActivate:[UserAthunGuard]},
+  {path:'Orders', component: UserOrdersComponent,canActivate:[UserAthunGuard]}
 ];
 
 @NgModule({
@@ -21,7 +23,8 @@ const routes:Routes=[
     UserComponent,
     ViewProfileComponent,
     EditProfileComponent,
-    LoginComponent
+    LoginComponent,
+    UserOrdersComponent
   ],
   imports: [
     CommonModule,

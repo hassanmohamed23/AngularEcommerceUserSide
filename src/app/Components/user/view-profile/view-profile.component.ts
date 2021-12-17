@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
+import { ProductService } from '../../../Services/product.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -7,18 +8,19 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./view-profile.component.scss']
 })
 export class ViewProfileComponent implements OnInit {
-public user:any;
-  constructor(private userService:UserService) { }
+  user: any;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    let userID=Number(sessionStorage.getItem("userID"));
+    let userID = Number(sessionStorage.getItem("userID"));
     this.userService.getUserInfo(userID)
-    .subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.user=res;
-      }
-  });
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.user = res;
+        }
+      });
+
   }
 
 }

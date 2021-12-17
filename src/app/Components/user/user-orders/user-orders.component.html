@@ -1,0 +1,35 @@
+<div *ngIf="ordersList.length>0;else elseBlock">
+    <div  *ngFor="let order of ordersList;let i=index;">
+        <br>
+        <h2>List of orders</h2>
+        <br>
+        <br>
+        
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Num</th>
+              <th scope="col">orderDate</th>
+              <th scope="col">totalPrice</th>
+              <th scope="col">orderStatus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{i+1}}</th>
+              <td>{{order.orderDate | date:'medium'}}</td>
+              <td>{{order.totalPrice}}</td>
+              <td>{{order.orderStatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <ng-template #elseBlock>
+      <br><br>
+      <h2>no orders to show</h2>
+      <br><br>
+  </ng-template>

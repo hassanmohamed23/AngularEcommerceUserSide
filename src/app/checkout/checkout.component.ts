@@ -44,7 +44,7 @@ export class CheckoutComponent implements OnInit {
           next: (res) => {
             console.log(res);
             this.cartService.removeAllCart();
-            this.router.navigate(['User/Profile']);
+            this.router.navigate(['User/Orders']);
             // this.afterLoginResp(res);
           }, error: (error) => {
             console.log(error);
