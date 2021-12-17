@@ -1,9 +1,9 @@
 <div class="col-md-6" style="margin: auto;">
     <div >
-        <h3>total price :EGP {{grandTotal}}</h3>
+        <h3>Total Price :EGP {{grandTotal}}</h3>
         
 <br>
-<h4>information for delivery</h4>
+<h4>Information for delivery</h4>
 <form [formGroup]="deliveryForm"  > 
 
     <div class="mb-3">
@@ -33,7 +33,6 @@
 <br>
 </form>
 <hr>
-{{deliveryForm.value|json}}
 
     </div>
     <div id="paymentButtons" [hidden]="deliveryForm.invalid">

@@ -6,6 +6,7 @@ import { CartService } from 'src/app/Services/cart.service';
 import { WatchListService } from 'src/app/Services/watch-list.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -18,17 +19,21 @@ export class HeaderComponent implements OnInit {
   catList: any[] = [];
   SubcatList: any[] = [];
   brandList: any[] = [];
-  userName=sessionStorage.getItem("username");
+  public userName:any="";
   CatId: any;
   public cartProdCount: number = 0;
   public watchProdCount: number = 0;
 
   constructor(private activatedRoute: ActivatedRoute, private ProductService: ProductService,
     private route: Router, private cartService: CartService,private watchlService:WatchListService,
-    private formBuilder: FormBuilder,private router: Router) { }
+    private formBuilder: FormBuilder,private router: Router,
+   private userSer:UserService) { }
 
 
   ngOnInit(): void {
+    this.userSer.getUserName().subscribe(res => {
+      this.userName = res;
+    });
     this.searchForm = this.formBuilder.group({
       searchInput: ['']
     });
@@ -69,6 +74,10 @@ export class HeaderComponent implements OnInit {
     if(searchText !=""){
       this.router.navigate(['/products/search', searchText]);
     }
+  }
+  signout(){
+   this.userSer.logout();
+   
   }
 
 }

@@ -49,6 +49,8 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem("isUserLogged", "yes");
       sessionStorage.setItem("userID", response.userID);
       sessionStorage.setItem("username", response.username);
+      this.userService.setUserName();
+
       this.router.navigate(['User/Profile']);
       //this.validationMsg = "Login succeeded"
     }
