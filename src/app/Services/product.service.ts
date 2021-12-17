@@ -136,5 +136,9 @@ export class ProductService {
     return this.httpservice.post(`${environment.APIURL}/Order/add`, body,this.options);
   }
 
-  
+  getUserOrders(userID:number):Observable<IResponse>
+  {
+    
+    return this.httpservice.get<IResponse>(`${environment.APIURL}/Order/${userID}`);
+  }
 }
