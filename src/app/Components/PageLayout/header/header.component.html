@@ -3,23 +3,17 @@
   <header class="header_area">
     <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between ">
         <!-- Classy Menu -->
-        <nav class="classy-navbar" id="essenceNav">
+        <nav class="classy-navbar" id="essenceNav" style="margin: 0;padding: 0;">
             <!-- Logo -->
-            <a class="nav-brand" routerLink="/home" routerLinkActive="active">I-TECH</a>
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-                <span class="navbarToggler"><span></span><span></span><span></span></span>
-            </div>
+            <a class="nav-brand" routerLink="/home" routerLinkActive="active"><i class="bi bi-house-fill"></i>I-TECH</a>
+            
             <!-- Menu -->
             <div class="classy-menu">
-                <!-- close btn -->
-                <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                </div>
+                
                 <!-- Nav Start -->
                 <div class="classynav">
                     <ul>
-                        <li><a>Categories</a>
+                        <li><a class="cat"><i class="bi bi-diagram-2-fill"></i>Categories</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4" *ngFor="let item of catList">
                                     <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}     
@@ -28,7 +22,7 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a>SubCategories</a>
+                        <li><a class="cat"><i class="bi bi-diagram-3-fill"></i>SubCategories</a>
                             <div class="megamenu">
                                 <ul class="single-mega cn-col-4" *ngFor="let sub of SubcatList">
                                     <li class="title"><a [routerLink]="['/products/subcat',sub.subCategoryId]" routerLinkActive="active">{{sub.subCatName}}</a>
@@ -37,12 +31,15 @@
                             </div>
                         </li>
 
-                        <li><a href="#">{{userName}}<img src="assets/img/core-img/user.svg" width="25" height="25" class="rounded-circle"></a>
+                        <li><a href="#">{{userName}}<img *ngIf="!userName" src="assets/img/core-img/user.svg" width="25" height="25" class="rounded-circle">
+                            <img *ngIf="userName" src="https://bootdey.com/img/Content/avatar/avatar7.png" width="25" height="25" class="rounded-circle"></a>
                             
                             <ul class="dropdown">
                                 <li *ngIf="!userName"><a routerLink="/User/Login"  routerLinkActive="active" ><i class="bi bi-box-arrow-in-right"></i>Sign in</a> </li>
                             <li *ngIf="!userName"><a routerLink="/Register"  routerLinkActive="active" ><i class="bi bi-dash-circle-fill"></i>Register</a> </li>
                             <li *ngIf="userName"><a routerLink="/User/Profile"  routerLinkActive="active" ><i class="fa fa-eye"></i>View Profile</a> </li>
+                            <li *ngIf="userName"><a routerLink="/User/editProfile"  routerLinkActive="active" ><i class="bi bi-pencil"></i>Edit Profile</a> </li>
+
                             <li *ngIf="userName"><button type="botton" class="btn btn-light" (click)="signout()"><i class="fa fa-power-off"></i>Sign out</button> </li>
                             </ul>
                         </li>

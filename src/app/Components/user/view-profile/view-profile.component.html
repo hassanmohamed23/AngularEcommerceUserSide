@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                      <h6 class="mb-0"><i class="bi bi-people-fill"></i>Full Name:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{user.firstname + user.firstname}} 
@@ -27,24 +27,53 @@
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">UserName</h6>
+                      <h6 class="mb-0"><i class="bi bi-person-fill"></i>UserName:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{user.username}} 
                     </div>
                   </div>
                   <hr>
+                  
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
+                      <h6 class="mb-0"><i class="bi bi-envelope-fill"></i>Email:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{user.email}}
                     </div>
                   </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"><i class="bi bi-bank"></i>Country:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.country}} 
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"><i class="bi bi-pc-display-horizontal"></i>City:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.city}} 
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0"><i class="bi bi-person-bounding-box"></i>Full Address:</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.fullAddress}} 
+                    </div>
+                  </div>
+                  <hr>
                 </div>
               </div>
-              <button class="btn btn-primary"><a routerLink='/User/Orders' routerLinkActive="active">Orders</a>  </button>
+              <button class="btn btn-primary" id="btnOrder"><a id="textOrder" routerLink='/User/Orders' routerLinkActive="active">Your Orders</a>  </button>
             </div>
         </div>
     </div>

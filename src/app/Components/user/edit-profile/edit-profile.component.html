@@ -1,1 +1,62 @@
-<p>edit-profile works!</p>
+<div class="contain">
+
+  <br>
+  <form [formGroup]="loginform" (ngSubmit)="onSubmit()" class="col-md-6"
+    style="margin: auto;max-width: 500px;border: 1px solid royalblue;">
+    <h3 class="text text-info " style="text-align: center;">I-Tech</h3>
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">FirstName</label>
+      <input type="text" formControlName="firstName"
+        [class.is-invalid]="loginform.controls['firstName'].invalid && loginform.controls['firstName'].dirty"
+        [class.is-valid]="loginform.controls['firstName'].valid" class="form-control" name="" id="name"
+        aria-describedby="emailHelpId" placeholder="">
+      <small id="emailHelpId" class="form-text text-muted"> more than 4 chars</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">LastName</label>
+      <input type="text" formControlName="lastName"
+        [class.is-invalid]="loginform.controls['lastName'].invalid && loginform.controls['lastName'].dirty"
+        [class.is-valid]="loginform.controls['lastName'].valid" class="form-control" name="" id="name"
+        aria-describedby="emailHelpId" placeholder="">
+      <small id="emailHelpId" class="form-text text-muted">more than 4 chars</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="country" class="form-label"><i class="bi bi-bank"></i>Country</label>
+      <input type="text" formControlName="country"
+        [class.is-invalid]="loginform.controls['country'].invalid && loginform.controls['country'].dirty"
+        [class.is-valid]="loginform.controls['country'].valid" class="form-control" name="" id="name"
+        aria-describedby="emailHelpId" placeholder="">
+      <small id="emailHelpId" class="form-text text-muted">more than 4 chars</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="city" class="form-label"><i class="bi bi-pc-display-horizontal"></i>City</label>
+      <input type="text" formControlName="city"
+        [class.is-invalid]="loginform.controls['city'].invalid && loginform.controls['city'].dirty"
+        [class.is-valid]="loginform.controls['city'].valid" class="form-control" name="" id=""
+        aria-describedby="emailHelpId" placeholder="">
+      <small id="emailHelpId" class="form-text text-muted">more than 4 chars</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="fullAddress" class="form-label"><i class="bi bi-person-bounding-box"></i>FullAddress</label>
+      <input type="text" formControlName="fullAddress"
+        [class.is-invalid]="loginform.controls['fullAddress'].invalid && loginform.controls['fullAddress'].dirty"
+        [class.is-valid]="loginform.controls['fullAddress'].valid" class="form-control" name="" id=""
+        aria-describedby="emailHelpId" placeholder="">
+      <small id="emailHelpId" class="form-text text-muted">more than 10 chars</small>
+    </div>
+
+
+
+    <br>
+    <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary"
+      style="width: 100px;font-size:18px; text-align: center; margin-left: 200px;">Edit</button><br><br>
+  </form>
+  <br>
+  <!-- <div style="color: red;">{{validationMsg}}</div> -->
+  <br>
+</div>

@@ -9,7 +9,7 @@ import { ProductService } from '../Services/product.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.sass']
+  styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
 
@@ -35,7 +35,7 @@ export class CheckoutComponent implements OnInit {
     render({
       id:"#paymentButtons",
       currency:"EGP",
-      value:"5",//this.cartService.getTotalPrice().toString(),
+      value:this.cartService.getTotalPrice().toString(),
       onApprove:(details)=>{
         this.productService.addOrder(this.grandTotal,this.userID,
           this.deliveryForm.get("city")?.value,this.deliveryForm.get("address")?.value,
@@ -45,10 +45,8 @@ export class CheckoutComponent implements OnInit {
             console.log(res);
             this.cartService.removeAllCart();
             this.router.navigate(['User/Orders']);
-            // this.afterLoginResp(res);
           }, error: (error) => {
             console.log(error);
-            // this.validationMsg = "error occured try again"
           }
         });
       }

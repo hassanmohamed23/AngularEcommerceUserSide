@@ -11,12 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserAthunGuard } from 'src/app/gaurd/user-athun.guard';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 
-const routes:Routes=[
-  {path:'', redirectTo:'/User', pathMatch:'full'},
-  {path:'Login', component: LoginComponent},
-  {path:'Profile', component: ViewProfileComponent,canActivate:[UserAthunGuard]},
-  {path:'Orders', component: UserOrdersComponent,canActivate:[UserAthunGuard]}
-];
+
 
 @NgModule({
   declarations: [
@@ -30,7 +25,6 @@ const routes:Routes=[
     CommonModule,
     ReactiveFormsModule,
      UserRoutingModule,
-    RouterModule.forChild(routes)
 
   ]
 })

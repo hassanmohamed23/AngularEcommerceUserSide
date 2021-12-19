@@ -27,7 +27,10 @@ export class RegisterationComponent implements OnInit {
       lastName: ['', [Validators.required, Validators.minLength(5)]],
       userName: ['', [Validators.required, Validators.minLength(5)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      country: ['', [Validators.required, Validators.minLength(5)]],
+      city: ['', [Validators.required, Validators.minLength(5)]],
+      fullAddress: ['', [Validators.required, Validators.minLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     });
 
   }
@@ -43,7 +46,8 @@ export class RegisterationComponent implements OnInit {
 
     this.userService.signUp(this.loginform.get("firstName")?.value, this.loginform.get("lastName")?.value,
       this.loginform.get("userName")?.value, this.loginform.get("email")?.value,
-      this.loginform.get("password")?.value)
+      this.loginform.get("country")?.value, this.loginform.get("city")?.value,
+      this.loginform.get("fullAddress")?.value,this.loginform.get("password")?.value)
       .subscribe({
         next: (res) => {
           this.afterLoginResp(res);
@@ -59,6 +63,8 @@ export class RegisterationComponent implements OnInit {
       sessionStorage.setItem("isUserLogged", "yes");
       sessionStorage.setItem("userID", response.userID);
       sessionStorage.setItem("username", response.username);
+      this.userService.setUserName();
+
       this.router.navigate(['User/Profile']);
     }
     else {

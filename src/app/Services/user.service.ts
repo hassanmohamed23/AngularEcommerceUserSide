@@ -39,16 +39,34 @@ export class UserService {
     return this.httpservice.post(`${environment.APIURL}/login`, body,this.options);
   }
 
-  signUp(firstName:string="",lastName:string="",userName:string="",email:string="",password:string=""): Observable<any> {
+  signUp(firstName:string="",lastName:string="",userName:string="",email:string="",
+   country:string,city:string,fullAddress:string,password:string=""): Observable<any> {
     const body=JSON.stringify({
       "firstName": firstName,
       "lastName": lastName,
       "username": userName,
       "email": email,
+      "country": country,
+      "city": city,
+      "fullAddress": fullAddress,
       "password": password
     });
     console.log(body)  
     return this.httpservice.post(`${environment.APIURL}/Signup`, body,this.options);
+  }
+
+
+  editProfile(id:number,firstName:string,lastName:string,country:string,city:string,fullAddress:string): Observable<any> {
+    const body={
+      "id":id,
+      "firstName": firstName,
+      "lastName": lastName,
+      "country": country,
+      "city": city,
+      "fullAddress": fullAddress
+    };
+    console.log(body)  
+    return this.httpservice.post(`${environment.APIURL}/Profile/Edit`, body);
   }
 
   getUserInfo(userID:number){

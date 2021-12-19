@@ -17,6 +17,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {DatePipe} from '@angular/common';    
+import { UserModule } from './Components/user/user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,6 @@ import {DatePipe} from '@angular/common';
     HeaderComponent,
     FooterComponent,
     RegisterationComponent,
-
       
       WatchListComponent,
       CheckoutComponent
@@ -39,6 +39,7 @@ import {DatePipe} from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    UserModule,
     HttpClientModule
   ],
   providers: [DatePipe],
