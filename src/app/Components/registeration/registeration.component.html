@@ -41,7 +41,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="country" class="form-label">Country</label>
+      <label for="country" class="form-label"><i class="fas fa-globe-americas"></i>Country</label>
       <input type="text" formControlName="country"
         [class.is-invalid]="loginform.controls['country'].invalid && loginform.controls['country'].dirty"
         [class.is-valid]="loginform.controls['country'].valid" class="form-control" name="" id="name"
@@ -50,7 +50,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="city" class="form-label">City</label>
+      <label for="city" class="form-label"><i class="fas fa-city"></i>City</label>
       <input type="text" formControlName="city"
         [class.is-invalid]="loginform.controls['city'].invalid && loginform.controls['city'].dirty"
         [class.is-valid]="loginform.controls['city'].valid" class="form-control" name="" id=""
@@ -59,7 +59,7 @@
     </div>
 
     <div class="mb-3">
-      <label for="fullAddress" class="form-label">FullAddress</label>
+      <label for="fullAddress" class="form-label"><i class="fas fa-map-marker-alt"></i>FullAddress</label>
       <input type="text" formControlName="fullAddress"
         [class.is-invalid]="loginform.controls['fullAddress'].invalid && loginform.controls['fullAddress'].dirty"
         [class.is-valid]="loginform.controls['fullAddress'].valid" class="form-control" name="" id=""

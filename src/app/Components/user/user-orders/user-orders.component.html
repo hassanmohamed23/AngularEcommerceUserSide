@@ -1,4 +1,4 @@
-<div *ngIf="ordersList.length>0;else elseBlock">
+<div >
     <div  *ngFor="let order of ordersList;let i=index;">
         <br>
         <h2>List of orders</h2>
@@ -15,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngIf="ordersList.length>0;else elseBlock">
               <th scope="row">{{i+1}}</th>
               <td>{{order.orderDate | date:'mediumDate'}}</td>
               <td>{{order.totalPrice}}</td>
