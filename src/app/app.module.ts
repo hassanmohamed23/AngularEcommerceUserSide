@@ -12,7 +12,7 @@ import { HeaderComponent } from './Components/PageLayout/header/header.component
 import { FooterComponent } from './Components/PageLayout/footer/footer.component';
 import { WatchListComponent } from './Components/watch-list/watch-list.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-
+import { environment } from 'src/environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +29,6 @@ import { UserModule } from './Components/user/user.module';
     HeaderComponent,
     FooterComponent,
     RegisterationComponent,
-      
       WatchListComponent,
       CheckoutComponent
   ],
@@ -40,6 +39,8 @@ import { UserModule } from './Components/user/user.module';
     ReactiveFormsModule,
     CommonModule,
     UserModule,
+    
+
     HttpClientModule
   ],
   providers: [DatePipe],

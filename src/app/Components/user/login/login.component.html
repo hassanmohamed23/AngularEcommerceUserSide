@@ -1,4 +1,4 @@
-<div class="contain">
+<div class="contain ">
 
   <br>
   <form [formGroup]="loginform" (ngSubmit)="onSubmit()" class="col-md-6"
@@ -23,8 +23,11 @@
     </div>
 
     <br>
-    <div><button type="submit" [disabled]="loginform.invalid" class="btn btn-primary"
-        style="margin-left: 200px;">Submit</button></div><br>
+      <div class="contain text-center">
+
+        <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary btn-default"
+        >Submit</button>
+      </div><br>
   </form>
   <a routerLink='User/Register' routerLinkActive="active">Create account</a>
   <br>

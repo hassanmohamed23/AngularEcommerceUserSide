@@ -31,7 +31,8 @@ export class ViewProductComponent implements OnInit {
           //this.productList.forEach((product,index)=>{
             this.productService.getProductImgByID(this.product.productId).subscribe({
               next: (Response: IResponse) => {
-                this.product["img"]=Response.data;
+                this.product["imgs"]=Response.data;
+                this.product["img"]=Response.data[0];
                 //this.prdImgsList[index] = Response.data[0];
               }
             })

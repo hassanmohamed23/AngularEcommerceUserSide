@@ -1,4 +1,4 @@
-<div class="contain">
+<div class="contain ">
   <br>
   <form [formGroup]="loginform" (ngSubmit)="onSubmit()" class="col-md-6"
     style="margin: auto;max-width: 500px;border: 1px solid royalblue;">
@@ -78,8 +78,10 @@
     </div>
 
     <br>
-    <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary"
-      style="text-align: center; margin-left: 200px;">Submit</button><br><br>
+    <div class="contain text-center">
+    <button type="submit" [disabled]="loginform.invalid" class="btn btn-primary btn-default "
+      style="text-align: center;">Submit</button><br><br>
+    </div>
   </form>
   <br>
   <div style="color: red;">{{validationMsg}}</div>

@@ -6,7 +6,9 @@
         <nav class="classy-navbar" id="essenceNav" style="margin: 0;padding: 0;">
             <!-- Logo -->
             <a class="nav-brand" routerLink="/home" routerLinkActive="active"><i class="bi bi-house-fill"></i>I-TECH</a>
-            
+            <div class="classy-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
             <!-- Menu -->
             <div class="classy-menu">
                 
@@ -15,7 +17,7 @@
                     <ul>
                         <li><a class="cat"><i class="bi bi-diagram-2-fill"></i>Categories</a>
                             <div class="megamenu">
-                                <ul class="single-mega cn-col-4" *ngFor="let item of catList">
+                                <ul class="single-mega cn-col-4 " *ngFor="let item of catList">
                                     <li class="title"><a [routerLink]="['/products/category',item.categoryId]"  routerLinkActive="active">{{item.categoryName}}     
                                     </a>
                                     </li>

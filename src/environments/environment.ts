@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  APIURL:'https://localhost:44311'
+  APIURL:'https://i-techapi.azurewebsites.net/'
 };
 
 /*
